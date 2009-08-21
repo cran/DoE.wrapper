@@ -1,0 +1,6 @@
+     import(FrF2,DoE.base,lhs)
+     export("lhs.design", "lhs.augment", 
+            "ccd.design", "ccd.augment", "bbd.design")
+     ## model.matrix.formula of AlgDesign prevents some formulae from working 
+     ## that would work otherwise
+     ## no solution found yet
