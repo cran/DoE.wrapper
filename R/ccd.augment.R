@@ -143,6 +143,7 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     desnum(design) <- desnum
     run.order(design) <- data.frame(run.no.in.std.order=row.names(aus),run.no=1:nrow(aus),run.no.std.rp =rownames(aus))
     di$type <- "ccd"
+    di$block.name <- block.name
     di$coding <- lapply(attr(aus,"coding"),"as.formula",env=NULL)[map[[1]]]
     di$cube.gen <- generators
     di$nstar <- (nrow(aus)/bbreps-sum(ncenter))/wbreps-n.c

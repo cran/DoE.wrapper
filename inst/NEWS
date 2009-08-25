@@ -1,0 +1,18 @@
+Changes to package DoE.wrapper
+
+The package is currently under intensive development. 
+Most features have now been created, but there may still 
+be some changes. 
+Suggestions and bug reports are very welcome.
+
+Version 0.6, 25/08/2009
+- added ncenter element to design.info attribute of bbd designs
+- added block.name element to design.info attribute of ccd designs
+  even if the cube portion is not blocked 
+- added test cases to ccd.augment.test.R in order to detect 
+  problems related to levels of the design factors
+- added test cases for function qua.design with design functions
+  that are not available in package DoE.base
+
+First version on CRAN: 
+Version 0.5, 21/08/2009

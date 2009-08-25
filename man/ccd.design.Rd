@@ -12,7 +12,7 @@ ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL,
         resolution=if (identical(blocks,1) & is.null(ncube)) 5 else NULL, 
         generators=NULL, ncenter = 4, alpha = "orthogonal", 
         replications=1, 
-        block.name="Blocks", blocks=1, 
+        block.name="Block.ccd", blocks=1, 
         randomize=TRUE, seed=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -40,8 +40,8 @@ ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL,
         currently, only proper replications can be generated;
         these are randomized in blocks within the center point and star blocks.
         The same number of replications is used for both the cube and the star blocks.}
-  \item{block.name}{ name of block factor that distinguishes (at least) between blocks; 
-        even for unblocked cubes, the ccd design has a cube and a star point block }
+  \item{block.name}{ name of block factor that distinguishes between blocks; 
+        even for unblocked cubes, the ccd design has at least one cube and one star point block }
   \item{blocks}{ the same as in function \code{\link[FrF2]{FrF2}};\cr
        is EITHER \cr 
        the number of blocks into which the experiment is subdivided \cr

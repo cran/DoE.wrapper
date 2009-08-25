@@ -441,6 +441,9 @@ $replications
 $repeat.only
 [1] FALSE
 
+$ncenter
+[1] 4
+
 $creator
 bbd.design(3, blockname = "blocks", factor.names = list(X = c(0, 
     10), Y = c(-10, +10), Z = c(223, 277)))

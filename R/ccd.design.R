@@ -1,7 +1,7 @@
 ccd.design <- function(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL, 
         resolution=if (identical(blocks,1) & is.null(ncube)) 5 else NULL, 
         generators=NULL, ncenter = 4, alpha = "orthogonal", 
-        replications=1, block.name="Blocks", blocks=1, 
+        replications=1, block.name="Block.ccd", blocks=1, 
         randomize=TRUE, seed=NULL, ...){
     ## can make n.c omittable
     ## by defaulting to 2^nfactors or better to the smallest number that permits a resolution V design
@@ -49,9 +49,8 @@ ccd.design <- function(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1),
           default.levels=default.levels, resolution=resolution, generators=generators, 
           block.name=block.name, blocks=blocks, 
           replications=replications, randomize = randomize, seed=seed[1])
-    if (!is.null(blocks)) aus <- ccd.augment(cube, ncenter=ncenter, block.name=block.name, alpha=alpha, 
+    aus <- ccd.augment(cube, ncenter=ncenter, block.name=block.name, alpha=alpha, 
         randomize=randomize, seed=seed[2])
-    else aus <- ccd.augment(cube, ncenter=ncenter, alpha=alpha, randomize=randomize, seed=seed[2])
     aus
 }
 

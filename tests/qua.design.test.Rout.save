@@ -1,0 +1,197 @@
+
+R version 2.9.1 Patched (2009-07-22 r48993)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> require(DoE.wrapper)
+Loading required package: DoE.wrapper
+Loading required package: FrF2
+Loading required package: BsMD
+Loading required package: scatterplot3d
+Loading required package: igraph
+Loading required package: sfsmisc
+Loading required package: DoE.base
+Loading required package: tcltk
+Loading Tcl/Tk interface ... done
+Loading required package: vcd
+Loading required package: MASS
+Loading required package: grid
+Loading required package: colorspace
+
+Attaching package: 'DoE.base'
+
+
+	The following object(s) are masked from package:graphics :
+
+	 plot.design 
+
+
+	The following object(s) are masked from package:utils :
+
+	 fix 
+
+
+Attaching package: 'FrF2'
+
+
+	The following object(s) are masked from package:BsMD :
+
+	 DanielPlot 
+
+Loading required package: rsm
+Loading required package: lhs
+> set.seed(1212)
+> ## test utility functions from DoE.base for designs that are not in
+> ## DoE.base
+> 
+> plan <- bbd.design(3)
+> y <- rnorm(nrow(plan))
+> lm(y~., plan)
+
+Call:
+lm(formula = y ~ ., data = plan)
+
+Coefficients:
+(Intercept)            A            B            C  
+   -0.05335      0.40462     -0.17298     -0.82620  
+
+> lm(y~., qua.design(plan))
+
+Call:
+lm(formula = y ~ ., data = qua.design(plan))
+
+Coefficients:
+(Intercept)          A.L          A.Q          B.L          B.Q          C.L  
+   0.219701     0.572221     0.587139    -0.244627    -0.004018    -1.168421  
+        C.Q  
+   0.754570  
+
+> lm(y~., qua.design(plan, quantitative="none",
++       contrasts=c(A="contr.treatment",B="contr.treatment",C="contr.treatment")))
+
+Call:
+lm(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment")))
+
+Coefficients:
+(Intercept)           A2           A3           B2           B3           C2  
+     1.3604      -0.3145       0.8092      -0.1681      -0.3460      -1.7504  
+         C3  
+    -1.6524  
+
+> 
+> plan <- ccd.design(4)
+full factorial design needed
+> y <- rnorm(nrow(plan))
+> lm(y~., plan)
+
+Call:
+lm(formula = y ~ ., data = plan)
+
+Coefficients:
+(Intercept)   Block.ccd2           X1           X2           X3           X4  
+    0.04547     -0.21191     -0.15577      0.20323     -0.04283     -0.26690  
+
+> lm(y~., qua.design(plan))
+
+Call:
+lm(formula = y ~ ., data = qua.design(plan))
+
+Coefficients:
+(Intercept)   Block.ccd2         X1.L         X1.Q         X1.C         X1^4  
+    -0.1344      -0.3026      -0.4364       0.6625       0.0786       0.1058  
+       X2.L         X2.Q         X2.C         X2^4         X3.L         X3.Q  
+    -0.1899      -0.7947      -0.7362           NA      -1.0780      -0.2114  
+       X3.C         X3^4         X4.L         X4.Q         X4.C         X4^4  
+    -0.7780           NA      -0.6724      -0.2732       0.1975           NA  
+
+> lm(y~., qua.design(plan, quantitative="none",
++       contrasts=c(X1="contr.treatment",X2="contr.treatment",
++             X3="contr.treatment",X4="contr.helmert")))
+
+Call:
+lm(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(X1 = "contr.treatment", X2 = "contr.treatment",         X3 = "contr.treatment", X4 = "contr.helmert")))
+
+Coefficients:
+(Intercept)   Block.ccd2          X12          X13          X14          X15  
+     0.6866      -0.3026       0.7913      -0.8809       0.4339      -0.5152  
+        X22          X23          X24          X25          X32          X33  
+    -0.8356       0.4908           NA      -0.6767      -0.3679      -0.7013  
+        X34          X35          X41          X42          X43          X44  
+         NA      -1.8437      -0.5645       0.1583      -0.3429           NA  
+
+> 
+> plan <- FrF2(16,4,blocks=2)
+> y <- rnorm(nrow(plan))
+> lm(y~., plan)
+
+Call:
+lm(formula = y ~ ., data = plan)
+
+Coefficients:
+(Intercept)      Blocks1           A1           B1           C1           D1  
+    0.16851     -0.02886      0.70946      0.20371     -0.17177     -0.25996  
+
+> lm(y~., qua.design(plan))
+
+Call:
+lm(formula = y ~ ., data = qua.design(plan))
+
+Coefficients:
+(Intercept)      Blocks1           A1           B1           C1           D1  
+    0.16851     -0.02886      0.70946      0.20371     -0.17177     -0.25996  
+
+> lm(y~., qua.design(plan, quantitative="none",
++       contrasts=c(A="contr.treatment",B="contr.treatment",
++             C="contr.treatment",D="contr.helmert")))
+
+Call:
+lm(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment", D = "contr.helmert")))
+
+Coefficients:
+(Intercept)      Blocks1           A2           B2           C2           D1  
+   -0.57289     -0.02886      1.41891      0.40742     -0.34354     -0.25996  
+
+> 
+> plan <- add.response(plan, y)
+> lm(y~., plan)
+
+Call:
+lm(formula = y ~ ., data = plan)
+
+Coefficients:
+(Intercept)      Blocks1           A1           B1           C1           D1  
+    0.16851     -0.02886      0.70946      0.20371     -0.17177     -0.25996  
+
+> lm(y~., qua.design(plan))
+
+Call:
+lm(formula = y ~ ., data = qua.design(plan))
+
+Coefficients:
+(Intercept)      Blocks1           A1           B1           C1           D1  
+    0.16851     -0.02886      0.70946      0.20371     -0.17177     -0.25996  
+
+> lm(y~., qua.design(plan, quantitative="none",
++       contrasts=c(A="contr.treatment",B="contr.treatment",
++             C="contr.treatment",D="contr.helmert")))
+
+Call:
+lm(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment", D = "contr.helmert")))
+
+Coefficients:
+(Intercept)      Blocks1           A2           B2           C2           D1  
+   -0.57289     -0.02886      1.41891      0.40742     -0.34354     -0.25996  
+
+> 

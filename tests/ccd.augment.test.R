@@ -22,11 +22,17 @@ reshuffled <- FrF2(8,4, estimable=c("AD"),res3=TRUE,randomize=FALSE)
 ccd.augment(reshuffled,6,randomize=FALSE)
 reshuffled <- FrF2(8,4, estimable=c("AD"),res3=TRUE, default.levels=c(0,100),
     factor.names=Letters[22:25],randomize=FALSE)
+reshuffled <- FrF2(8,4, estimable=c("AD"),res3=TRUE, default.levels=c(0,100),
+    factor.names=list(T=c(30,50),U=c(24,26),V=c(100,400),W=c(30,75)),randomize=FALSE)
 ccd.augment(reshuffled,6,randomize=FALSE)
 desnum(ccd.augment(reshuffled,6,randomize=FALSE))
 ## more reshuffling
 reshuffled.big <- FrF2(32,7, estimable=c("AC","BC","AB"),randomize=FALSE,
    factor.names=Letters[19:25],default.levels=c(10,30))
+ccd.reshuffled.big <- ccd.augment(reshuffled.big,6,randomize=FALSE)
+reshuffled.big <- FrF2(32,7, estimable=c("AC","BC","AB"),randomize=FALSE,
+   factor.names=list(T=c(30,50),U=c(24,26),V=c(100,400),W=c(30,75), X=c(0.1,0.7),Y="",Z=""),
+   default.levels=c(10,30),repl=2)
 ccd.reshuffled.big <- ccd.augment(reshuffled.big,6,randomize=FALSE)
 ccd.reshuffled.big
 desnum(ccd.reshuffled.big)
