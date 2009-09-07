@@ -21,7 +21,7 @@
    It is planned to also provide access to D-optimal 
    designs using package \pkg{AlgDesign}. This may take some time, however.
    
-   All functions in this package provide class \code{\link[DoE.base]{design}} objects, 
+   All functions in this package provide class \code{\link[DoE.base:class-design]{design}} objects, 
    which are data frames with attributes.
    }
 
@@ -45,7 +45,7 @@
 \author{ Ulrike Groemping }
 \note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
 \seealso{ See also \code{\link{ccd.design}}, \code{\link{ccd.augment}}, \code{\link{bbd.design}}, \code{\link{lhs.design}}, 
-    \code{\link[lhs]{lhs}}, \code{\link[rsm]{rsm}}, \code{\link[FrF2]{FrF2}} }
+    \code{\link[lhs]{lhs-package}}, \code{\link[rsm]{rsm}}, \code{\link[FrF2]{FrF2}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ array }

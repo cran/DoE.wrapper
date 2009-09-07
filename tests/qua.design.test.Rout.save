@@ -33,6 +33,11 @@ Loading required package: colorspace
 Attaching package: 'DoE.base'
 
 
+	The following object(s) are masked from package:stats :
+
+	 lm 
+
+
 	The following object(s) are masked from package:graphics :
 
 	 plot.design 
@@ -52,6 +57,11 @@ Attaching package: 'FrF2'
 
 Loading required package: rsm
 Loading required package: lhs
+Warning messages:
+1: package 'scatterplot3d' was built under R version 2.9.2 
+2: package 'igraph' was built under R version 2.9.2 
+3: package 'vcd' was built under R version 2.9.2 
+4: package 'colorspace' was built under R version 2.9.2 
 > set.seed(1212)
 > ## test utility functions from DoE.base for designs that are not in
 > ## DoE.base
@@ -61,7 +71,7 @@ Loading required package: lhs
 > lm(y~., plan)
 
 Call:
-lm(formula = y ~ ., data = plan)
+lm.default(formula = y ~ ., data = plan)
 
 Coefficients:
 (Intercept)            A            B            C  
@@ -70,7 +80,7 @@ Coefficients:
 > lm(y~., qua.design(plan))
 
 Call:
-lm(formula = y ~ ., data = qua.design(plan))
+lm.default(formula = y ~ ., data = qua.design(plan))
 
 Coefficients:
 (Intercept)          A.L          A.Q          B.L          B.Q          C.L  
@@ -82,7 +92,7 @@ Coefficients:
 +       contrasts=c(A="contr.treatment",B="contr.treatment",C="contr.treatment")))
 
 Call:
-lm(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment")))
+lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment")))
 
 Coefficients:
 (Intercept)           A2           A3           B2           B3           C2  
@@ -97,7 +107,7 @@ full factorial design needed
 > lm(y~., plan)
 
 Call:
-lm(formula = y ~ ., data = plan)
+lm.default(formula = y ~ ., data = plan)
 
 Coefficients:
 (Intercept)   Block.ccd2           X1           X2           X3           X4  
@@ -106,7 +116,7 @@ Coefficients:
 > lm(y~., qua.design(plan))
 
 Call:
-lm(formula = y ~ ., data = qua.design(plan))
+lm.default(formula = y ~ ., data = qua.design(plan))
 
 Coefficients:
 (Intercept)   Block.ccd2         X1.L         X1.Q         X1.C         X1^4  
@@ -121,7 +131,7 @@ Coefficients:
 +             X3="contr.treatment",X4="contr.helmert")))
 
 Call:
-lm(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(X1 = "contr.treatment", X2 = "contr.treatment",         X3 = "contr.treatment", X4 = "contr.helmert")))
+lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(X1 = "contr.treatment", X2 = "contr.treatment",         X3 = "contr.treatment", X4 = "contr.helmert")))
 
 Coefficients:
 (Intercept)   Block.ccd2          X12          X13          X14          X15  
@@ -137,7 +147,7 @@ Coefficients:
 > lm(y~., plan)
 
 Call:
-lm(formula = y ~ ., data = plan)
+lm.default(formula = y ~ ., data = plan)
 
 Coefficients:
 (Intercept)      Blocks1           A1           B1           C1           D1  
@@ -146,7 +156,7 @@ Coefficients:
 > lm(y~., qua.design(plan))
 
 Call:
-lm(formula = y ~ ., data = qua.design(plan))
+lm.default(formula = y ~ ., data = qua.design(plan))
 
 Coefficients:
 (Intercept)      Blocks1           A1           B1           C1           D1  
@@ -157,7 +167,7 @@ Coefficients:
 +             C="contr.treatment",D="contr.helmert")))
 
 Call:
-lm(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment", D = "contr.helmert")))
+lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment", D = "contr.helmert")))
 
 Coefficients:
 (Intercept)      Blocks1           A2           B2           C2           D1  
@@ -168,7 +178,7 @@ Coefficients:
 > lm(y~., plan)
 
 Call:
-lm(formula = y ~ ., data = plan)
+lm.default(formula = y ~ ., data = plan)
 
 Coefficients:
 (Intercept)      Blocks1           A1           B1           C1           D1  
@@ -177,7 +187,7 @@ Coefficients:
 > lm(y~., qua.design(plan))
 
 Call:
-lm(formula = y ~ ., data = qua.design(plan))
+lm.default(formula = y ~ ., data = qua.design(plan))
 
 Coefficients:
 (Intercept)      Blocks1           A1           B1           C1           D1  
@@ -188,7 +198,7 @@ Coefficients:
 +             C="contr.treatment",D="contr.helmert")))
 
 Call:
-lm(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment", D = "contr.helmert")))
+lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment", D = "contr.helmert")))
 
 Coefficients:
 (Intercept)      Blocks1           A2           B2           C2           D1  

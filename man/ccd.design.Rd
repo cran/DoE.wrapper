@@ -82,7 +82,7 @@ ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL,
    
    There are two main purposes for this function: one is to provide 
    central composite designs within the same syntax philosophy 
-   used in packages \code{\link[DoE.base]{DoE.base}} and \code{\link[FrF2]{FrF2}}. 
+   used in packages \code{\link[DoE.base]{DoE.base-package}} and \code{\link[FrF2]{FrF2}}. 
    The other is to automatically identify good (=resolution V) cube portions, 
    which can be achieved by using the resolution parameter.
 
@@ -101,12 +101,12 @@ ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL,
    
    }
 \value{
-    The function returns a data frame of S3 class \code{\link[DoE.base]{design}} 
+    The function returns a data frame of S3 class \code{\link[DoE.base:class-design]{design}} 
     with attributes attached. The data frame itself is in the original data scale. 
     The data frame \code{desnum} attached as attribute \code{desnum} is the coded design. 
     The attribute \code{design.info} is a list of various design properties. 
     The element \code{type} of that list is the character string \code{ccd}.
-    Besides the elements present in all class \code{\link[DoE.base]{design}} objects, 
+    Besides the elements present in all class \code{\link[DoE.base:class-design]{design}} objects, 
     there are the elements quantitative (vector with \code{nfactor} TRUE entries),
     and a \code{codings} element usable in the coding functions available in the \pkg{rsm} 
     package, e.g. \code{\link[rsm]{coded.data}}.
@@ -114,7 +114,7 @@ ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL,
     Note that the row names and the standard order column in the 
     \code{run.order} attribute of ccd designs 
     are not in conventional order, 
-    if the blocking routine \code{\link[FrF2]{blockpick.big}} was used. 
+    if the blocking routine \code{\link[FrF2:blockpick]{blockpick.big}} was used. 
     In such situations, these should not be used as the basis for any calculations. 
     }
 \references{ 
@@ -145,7 +145,7 @@ ccd.design(5, ncube=32, blocks=4)
 ## for usage of other options, look at the FrF2 documentation
 }
 \seealso{ See also \code{\link{ccd.augment}}, \code{\link[FrF2]{add.center}}, 
-\code{\link[FrF2]{FrF2}}, \code{\link[lhs]{lhs}}, \code{\link[rsm]{rsm}} }
+\code{\link[FrF2]{FrF2}}, \code{\link[lhs]{lhs-package}}, \code{\link[rsm]{rsm}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ array }

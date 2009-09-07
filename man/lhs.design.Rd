@@ -23,7 +23,7 @@ lhs.augment(lhs, m=1, type="optAugment", seed=NULL, ...)
         \pkg{lhs} in order to fulfill their task; possible types for \code{lhs.design} are 
         \code{genetic}, \code{improved}, \code{maximin}, \code{optimum}, \code{random}, 
         possible types for \code{lhs.augment} are \code{augment}, \code{optSeeded}, or \code{optAugment}.\cr 
-        see the respective functions from package \pkg{\link[lhs]{lhs}} }
+        see the respective functions from package \pkg{\link[lhs:lhs-package]{lhs}} }
   \item{seed}{ seed for random number generation; latin hypercube samples from package 
         \pkg{lhs} are random samples. Specifying a seed makes the result reproducible. }
   \item{factor.names}{ list of scale end values for each factor; 
@@ -55,7 +55,7 @@ lhs.augment(lhs, m=1, type="optAugment", seed=NULL, ...)
    type \code{optSeeded} takes the existing sample as the starting point but potentially modifies it). 
    In comparison to direct usage of package \pkg{lhs}, the functions add the possibility 
    of recoding lhs samples to a desired range, and they embed the lhs designs into 
-   class \code{\link[DoE.base]{design}}.\cr
+   class \code{\link[DoE.base:class-design]{design}}.\cr
    Range coding is based on the recoding facility from package \pkg{rsm} and the 
    \code{factor.names} parameter used analogously to packages \pkg{DoE.base} and \pkg{FrF2}.
    
@@ -64,7 +64,7 @@ lhs.augment(lhs, m=1, type="optAugment", seed=NULL, ...)
    for computer experiments, where replications of the same settings are often useless.
    }
 \value{
-    Both functions return a data frame of S3 class \code{\link[DoE.base]{design}} 
+    Both functions return a data frame of S3 class \code{\link[DoE.base:class-design]{design}} 
     with attributes attached. 
     The data frame contains the experimental settings as recoded to the scale ends defined in factor.names (if given), 
     rounded to the number of digits given in \code{digits} (if given).
@@ -81,7 +81,7 @@ lhs.augment(lhs, m=1, type="optAugment", seed=NULL, ...)
     and also the respective numbering of the design.
 
     The attribute \code{design.info} is a list of various design properties, with type resolving to \dQuote{lhs}. 
-    In addition to the standard list elements (cf. \code{\link[DoE.base]{design}}), the \code{subtype} 
+    In addition to the standard list elements (cf. \code{\link[DoE.base:class-design]{design}}), the \code{subtype} 
     element indicates the type of latin hypercube designs and possibly additional augmentations, the element 
     \code{quantitative} is a vector of \code{nfactor} logical TRUEs, 
     and the \code{digits} elements indicates the digits to which the data were rounded. 
@@ -118,7 +118,8 @@ lhs.augment(lhs, m=1, type="optAugment", seed=NULL, ...)
    plot(plan4)
    cor(plan4)
 }
-\seealso{ See Also \code{\link[lhs]{lhs}}, \code{\link[FrF2]{FrF2}}, \code{\link[DoE.base]{oa.design}}, \code{\link[FrF2]{pb}} }
+\seealso{ See Also \code{\link[lhs]{lhs-package}}, \code{\link[FrF2]{FrF2}}, 
+    \code{\link[DoE.base]{oa.design}}, \code{\link[FrF2]{pb}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ array }

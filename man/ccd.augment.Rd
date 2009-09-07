@@ -46,12 +46,12 @@ ccd.augment(cube, ncenter = 4, columns="all", block.name="Block.ccd",
    and therefore generates a warning.
    }
 \value{
-    The function returns a data frame of S3 class \code{\link[DoE.base]{design}} 
+    The function returns a data frame of S3 class \code{\link[DoE.base:class-design]{design}} 
     with attributes attached. The data frame itself is in the original data scale. 
     The data frame \code{desnum} attached as attribute \code{desnum} is the original data frame 
     returned by package \code{rsm}. The attribute \code{design.info} is a list of various design properties. 
     The element \code{type} of that list is the character string \code{ccd}.
-    Besides the elements present in all class \code{\link[DoE.base]{design}} objects, 
+    Besides the elements present in all class \code{\link[DoE.base:class-design]{design}} objects, 
     there are the elements quantitative (vector with \code{nfactor} TRUE entries),
     and a \code{codings} element usable in the coding functions available in the \pkg{rsm} 
     package, e.g. \code{\link[rsm]{coded.data}}.
@@ -60,7 +60,7 @@ ccd.augment(cube, ncenter = 4, columns="all", block.name="Block.ccd",
     attribute of ccd designs based on 
     estimability requirements (cf. also the details section) are not in conventional order 
     and should not be used as the basis for any calculations. The same is true for 
-    blocked designs, if the blocking routine \code{\link[FrF2]{blockpick.big}} was used.
+    blocked designs, if the blocking routine \code{\link[FrF2:blockpick]{blockpick.big}} was used.
     }
 \references{ 
   Box, G.E.P., Hunter, J.S. and Hunter, W.G. (2005, 2nd ed.). \emph{Statistics for Experimenters}. 
@@ -110,7 +110,8 @@ ccd.augment(cube, ncenter = 4, columns="all", block.name="Block.ccd",
     par(mfrow=c(2,3))
     contour(rsm.result,~A+B+C+D)
 }
-\seealso{ ~~See also , \code{\link{ccd.design}}, \code{\link[FrF2]{FrF2}}, \code{\link[lhs]{lhs}}, \code{\link[rsm]{rsm}} }
+\seealso{ See also \code{\link{ccd.design}}, \code{\link[FrF2]{FrF2}}, 
+   \code{\link[lhs]{lhs-package}}, \code{\link[rsm]{rsm}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ array }

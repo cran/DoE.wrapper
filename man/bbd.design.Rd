@@ -47,7 +47,7 @@ bbd.design(nfactors, ncenter=4, factor.names = NULL, default.levels=c(-1,1),
    functions - is not implemented. This is planned for the future, but does not have high priority.
    }
 \value{
-    The function returns a data frame of S3 class \code{\link[DoE.base]{design}} 
+    The function returns a data frame of S3 class \code{\link[DoE.base:class-design]{design}} 
     with attributes attached. The data frame itself is in the original data scale. 
     The matrix \code{desnum} attached as attribute \code{desnum} contains the coded data,
     the attribute \code{run.order} contains the standard order and the actual run order 
@@ -56,7 +56,7 @@ bbd.design(nfactors, ncenter=4, factor.names = NULL, default.levels=c(-1,1),
     
     The attribute \code{design.info} is a list of design properties. 
     The element \code{type} of that list is the character string \code{bbd}. 
-    Besides the elements present in all class \code{\link[DoE.base]{design}} objects, 
+    Besides the elements present in all class \code{\link[DoE.base:class-design]{design}} objects, 
     there are the elements quantitative (vector with \code{nfactor} TRUE entries),
     and a \code{codings} element usable in the coding functions available in the \pkg{rsm} 
     package, e.g. \code{\link[rsm]{coded.data}}.
@@ -94,7 +94,7 @@ bbd.design(3,ncenter=6,
 ## design with character factor.names and default levels
 bbd.design(3,factor.names=c("one","two", "three"), default.levels=c(10,20))
 }
-\seealso{ See also \code{\link[FrF2]{FrF2}}, \code{\link{ccd.design}}, \code{\link[lhs]{lhs}}, \code{\link[rsm]{rsm}} }
+\seealso{ See also \code{\link[FrF2]{FrF2}}, \code{\link{ccd.design}}, \code{\link[lhs]{lhs-package}}, \code{\link[rsm]{rsm}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ array }

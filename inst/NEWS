@@ -5,6 +5,10 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+Version 0.6-1, 07/09/2009
+- updated links in help files to work with R 2.10.0 onwards
+- renamed package help file (typo correction)
+
 Version 0.6, 25/08/2009
 - added ncenter element to design.info attribute of bbd designs
 - added block.name element to design.info attribute of ccd designs
