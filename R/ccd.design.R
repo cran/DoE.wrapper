@@ -27,10 +27,14 @@ ccd.design <- function(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1),
                  factor.names <- rep(list(default.levels),nfactors)
                  names(factor.names) <- paste("X",1:nfactors,sep="")
          }
+    block.name <- make.names(block.name) ## make block name a valid R name
     #if (blocks>1 & bbreps*wbreps>1) stop("replicated blocked designs are currently not covered by ccd.design")
     if (is.list(factor.names) & !length(unique(names(factor.names)))==nfactors)
             names(factor.names) <- paste("X",1:nfactors,sep="")
     if (!length(factor.names)==nfactors) stop("mismatch between nfactors and length of factor.names")
+    ## make all factor names valid R names
+    names(factor.names) <- make.names(names(factor.names),unique=TRUE)
+
     if (!is.numeric(ncenter)) stop("ncenter must be numeric")
     if (!all(ncenter==floor(ncenter))) stop("ncenter must be integer")
     if (!length(ncenter) %in% c(1,2)) stop("ncenter must have one or two elements")

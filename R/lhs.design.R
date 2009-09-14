@@ -26,6 +26,9 @@ lhs.design <- function(nruns, nfactors, type="optimum", factor.names=NULL, seed=
         names(hilf) <- factor.names
         factor.names <- hilf
      }
+     ## make all factor names valid R names
+     names(factor.names) <- make.names(names(factor.names), unique=TRUE)
+
      if (!is.null(seed)) set.seed(seed)
      ## determine lhs design
         desnum <- eval(parse(text=paste(type,"LHS(n=nruns,k=nfactors, ...)",sep="")))

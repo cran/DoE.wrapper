@@ -5,6 +5,13 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+Version 0.6-2, 14/09/2009
+- made all factor names valid R names in all design generating functions
+- bug fix: design.info attribute for blocked Box-Behnken designs 
+  did not include the bbreps and wbreps elements, which caused 
+  e.g. function summary.design to fail on them; for avoiding unnecessary 
+  case distinctions, these elements (always 1) have been added.
+
 Version 0.6-1, 07/09/2009
 - updated links in help files to work with R 2.10.0 onwards
 - renamed package help file (typo correction)
