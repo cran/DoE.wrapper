@@ -1,5 +1,5 @@
 
-R version 2.9.1 Patched (2009-07-22 r48993)
+R version 2.10.1 (2009-12-14)
 Copyright (C) 2009 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 
@@ -23,14 +23,20 @@ Loading required package: scatterplot3d
 Loading required package: igraph
 Loading required package: sfsmisc
 Loading required package: DoE.base
-Loading required package: tcltk
+Loading required package: relimp
 Loading Tcl/Tk interface ... done
+Loading required package: tcltk
 Loading required package: vcd
 Loading required package: MASS
 Loading required package: grid
 Loading required package: colorspace
 
 Attaching package: 'DoE.base'
+
+
+	The following object(s) are masked from package:relimp :
+
+	 showData 
 
 
 	The following object(s) are masked from package:stats :
@@ -57,11 +63,8 @@ Attaching package: 'FrF2'
 
 Loading required package: rsm
 Loading required package: lhs
-Warning messages:
-1: package 'scatterplot3d' was built under R version 2.9.2 
-2: package 'igraph' was built under R version 2.9.2 
-3: package 'vcd' was built under R version 2.9.2 
-4: package 'colorspace' was built under R version 2.9.2 
+Loading required package: DiceDesign
+Loading required package: AlgDesign
 > set.seed(1212)
 > ## test utility functions from DoE.base for designs that are not in
 > ## DoE.base
@@ -103,6 +106,7 @@ Coefficients:
 > 
 > plan <- ccd.design(4)
 full factorial design needed
+creating full factorial with  16  runs ...
 > y <- rnorm(nrow(plan))
 > lm(y~., plan)
 

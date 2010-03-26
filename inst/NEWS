@@ -5,6 +5,16 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+Version 0.7, 26/03/2010
+- added function Dopt.design for D-optimal designs with or without blocking
+  based on functions optFederov and optBlock of package AlgDesign
+- added function Dopt.augment for augmenting various designs with 
+  D-optimal additional runs
+- added several variants of designs for computer experiments from 
+  package DiceDesign
+- bug fix: creator element of designs created with ccd.design now gives 
+  the original call, not interim calls
+
 Version 0.6-2, 14/09/2009
 - made all factor names valid R names in all design generating functions
 - bug fix: design.info attribute for blocked Box-Behnken designs 

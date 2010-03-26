@@ -6,8 +6,9 @@
 \description{
   This package creates various kinds of designs for (industrial) experiments. 
   It uses, and sometimes enhances, design generation routines from other packages. 
-  Initially, response surface designs from package rsm and latin hypercube samples 
-  from package lhs have been implemented.
+  So far, response surface designs from package rsm, designs for computer 
+  experiments (latin hypercube samples etc.) from packages lhs and DiceDesign 
+  and D-optimal designs from package AlgDesign have been implemented.
 }
 \details{
    Currently, the package provides classical response surface designs from package 
@@ -16,13 +17,17 @@
    For the latter, there is also a function for augmenting 2-level fractional factorials 
    into central composite designs (\code{\link{ccd.design}}).
    
-   Furthermore, latin hypercube samples from package \pkg{lhs} are provided. 
+   Furthermore, latin hypercube samples and other designs for computer experiments 
+   from packages \pkg{lhs} and \pkg{DiceDesign} are provided. 
    
-   It is planned to also provide access to D-optimal 
-   designs using package \pkg{AlgDesign}. This may take some time, however.
+   Furthermore, D-optimal designs have been implemented, 
+   using package \pkg{AlgDesign}. This implementation is currently in beta shape.
    
-   All functions in this package provide class \code{\link[DoE.base:class-design]{design}} objects, 
+   All designs created by this package are class \code{\link[DoE.base:class-design]{design}} objects, 
    which are data frames with attributes.
+   
+   Apart from providing designs, the package also provides functions for comparing 
+   the quality of several designs with quantitative variables (function \code{compare}).
    }
 
 \references{ 
@@ -45,7 +50,8 @@
 \author{ Ulrike Groemping }
 \note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
 \seealso{ See also \code{\link{ccd.design}}, \code{\link{ccd.augment}}, \code{\link{bbd.design}}, \code{\link{lhs.design}}, 
-    \code{\link[lhs]{lhs-package}}, \code{\link[rsm]{rsm}}, \code{\link[FrF2]{FrF2}} }
+    \code{\link[lhs]{lhs-package}}, \code{\link[rsm]{rsm}}, \code{\link[AlgDesign]{optFederov}}, 
+    \code{\link[AlgDesign]{optBlock}}, \code{\link{compare}}, \code{\link[FrF2]{FrF2}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ array }

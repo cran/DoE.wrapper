@@ -1,24 +1,56 @@
-lhs.design <- function(nruns, nfactors, type="optimum", factor.names=NULL, seed=NULL, digits=NULL, ...){
+lhs.design <- function(nruns, nfactors, type="optimum", factor.names=NULL, seed=NULL, digits=NULL, nlevels=nruns, 
+     randomize = FALSE, ...){
      creator <- sys.call()
-     if (!type %in% c("genetic","improved","maximin","optimum","random"))
+     if (!type %in% c("genetic","improved","maximin","optimum","random","dmax","faure","strauss","fact"))
            stop("invalid type")
-     ## calls functions geneticLHS ... randomLHS
+
+## ??? open: error control for specification of required arguments for dmaxDesign and straussDesign
+
+     ## calls functions geneticLHS ... randomLHS from package lhs
+     ## or              dmaxDesign, runif.faure, straussDesign or factDesign from package DiceDesign
      ## additional parameters:  pop, gen and pMut for genetic
      ##                         dup for improved and maximin
      ##                         maxSweeps and eps for optimum
-     ##                         none for random
+     ##                         none for random and runif.faure
+     ##                         range and niter_max for dmaxDesign
+     ##                         RND for straussDesign
+     ##                         randomize for factDesign
      if (!is.null(digits)) if (!(length(digits)==nfactors | length(digits)==1)){
          stop("if specified, digits must be a single number or must contain an entry for each factor")
          if (!is.numeric(digits)) stop("digits must be numeric")
          if (!all(floor(digits)==digits)) stop("digits must be integer")
          }
+     ## nruns can be missing for type "fact", otherwise it must be identical to nlevels or already correctly calculated
+     if (missing(nruns) & !type=="fact") stop("nruns must be specified for all types except fact")
+     if (missing(nfactors)) stop("nfactors must be specified")
+     if (missing(nruns)){ 
+           if (!is.numeric(nlevels)) stop("nlevels must be numeric")
+           if (!length(nlevels) %in% c(1,nfactors)) stop("nlevels must be a number or a vector of length nfactors.")
+           if (!all(nlevels%%1==0)) stop("All entries of nlevels must be integer numbers.")
+           if (length(nlevels)==1) nlevels <- rep(nlevels, nfactors)
+           nruns <- prod(nlevels)
+         }
+
+     if (!(is.numeric(nruns) & is.numeric(nfactors))) stop("nruns and nfactors must be numeric")
+     if (!length(nruns)==1) stop("nruns must be a single number")
+     if (!(nruns%%1==0 & nfactors%%1==0)) stop("nruns and nfactors must be integer")
+     
+     ## treat the case for type "fact", where nlevels is given in nruns
+     if (type=="fact" & identical(nruns,nlevels)){
+            nlevels <- rep(nlevels, nfactors)
+            nruns <- prod(nlevels)
+         }
+
      if (is.null(factor.names)){ 
           factor.names <- rep(list(c(0,1)),nfactors)
           names(factor.names) <- paste("X",1:nfactors,sep="")
           }
      if (!length(factor.names)==nfactors) stop("factor.names must have one entry for each factor.")
      if (is.list(factor.names)){
-        if (!all(sapply(factor.names,"is.numeric"))) stop("factor.names must give the scale ends for the quantitative variables, if given.")
+        if (!all(sapply(factor.names,"is.numeric"))) 
+               stop("The list factor.names must give the scale ends for the quantitative variables, if given.")
+        if (!all(sapply(factor.names,"length")==2)) 
+               stop("The list factor.names must give the scale ends for the quantitative variables, if given.")
         if (is.null(names(factor.names))) names(factor.names) <- paste("X",1:nfactors,sep="")
         }
      if (is.character(factor.names)){
@@ -31,7 +63,18 @@ lhs.design <- function(nruns, nfactors, type="optimum", factor.names=NULL, seed=
 
      if (!is.null(seed)) set.seed(seed)
      ## determine lhs design
+     if (type %in% c("genetic","improved","maximin","optimum","random"))
         desnum <- eval(parse(text=paste(type,"LHS(n=nruns,k=nfactors, ...)",sep="")))
+     else{ 
+        ## determine DiceDesign design
+        if (type %in% c("dmax","strauss"))
+           DD <- eval(parse(text=paste(type,"Design(n=nruns,dimension=nfactors, ...)",sep="")))
+        if (type =="fact")
+           DD <- factDesign(levels=nlevels,dimension=nfactors)
+        if (type =="faure")
+           DD <- runif.faure(n=nruns,dimension=nfactors)
+        desnum <- DD$design
+     }
         ## colnames needed as V1, ..., for recoding
         colnames(desnum) <- paste("V",1:nfactors,sep="")
         rownames(desnum) <- 1:nrow(desnum)
@@ -43,10 +86,35 @@ lhs.design <- function(nruns, nfactors, type="optimum", factor.names=NULL, seed=
             for (i in 1:nfactors) design[,i] <- round(design[,i],digits=digits[i])
         class(design) <- c("design",class(design))
         desnum(design) <- desnum
-        design.info(design) <- list(type="lhs", subtype=paste(type,"LHS",sep=""),
+     if (type %in% c("genetic","improved","maximin","optimum","random"))
+        di <- list(type="lhs", subtype=paste(type,"LHS",sep=""),
            nruns=nruns, nfactors=nfactors, factor.names=factor.names, 
            quantitative=rep(TRUE,nfactors), randomize=TRUE, seed=seed, replications=1, repeat.only=FALSE, digits=digits,
            creator=creator)
+     else di <- append(list(type="lhs", subtype=paste(type,"DiceDesign",sep="."),
+           nruns=nruns, nfactors=nfactors, factor.names=factor.names, 
+           quantitative=rep(TRUE,nfactors), randomize=TRUE, seed=seed, replications=1, repeat.only=FALSE, digits=digits,
+           creator=creator),DD[-(1:3)])
+     if (type %in% c("fact","faure")){
+         if (randomize){
+             if (!is.null(seed)) set.seed(seed)
+             rand.ord <- sample(nrow(design))
+             design <- design[rand.ord,]
+         }
+         di$randomize <- randomize 
+         if (type=="fact"){ 
+            di$nlevels <- di$levels
+            di$levels <- NULL
+            }
+         }
+     ## append optimality information
+     di$optimality.criteria <- list(S=Scalc(desnum),
+                          mindist=mindist(desnum),
+                          meshRatio=meshRatio(desnum),
+                          coverage=coverage(desnum),
+                          det.cor=det(cor(desnum)))
+     design.info(design) <- di
+
         run.no.in.std.order <- run.no <- run.no.std.rp <- 1:nruns
         run.order(design) <- data.frame(run.no.in.std.order, run.no, run.no.std.rp)
         

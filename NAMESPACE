@@ -1,6 +1,4 @@
-     import(FrF2,DoE.base,lhs)
+     import(FrF2,DoE.base,lhs,AlgDesign)
      export("lhs.design", "lhs.augment", 
-            "ccd.design", "ccd.augment", "bbd.design")
-     ## model.matrix.formula of AlgDesign prevents some formulae from working 
-     ## that would work otherwise
-     ## no solution found yet
+            "ccd.design", "ccd.augment", "bbd.design", "Dopt.design", "Dopt.augment",
+            "Scalc", "compare")

@@ -55,6 +55,9 @@ ccd.design <- function(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1),
           replications=replications, randomize = randomize, seed=seed[1])
     aus <- ccd.augment(cube, ncenter=ncenter, block.name=block.name, alpha=alpha, 
         randomize=randomize, seed=seed[2])
+    hilf <- design.info(aus)
+    hilf$creator <- creator
+    design.info(aus) <- hilf
     aus
 }
 
