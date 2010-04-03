@@ -66,7 +66,7 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
         \code{constraint} is evaluated on the specified data set or after automatic creation 
         of a full factorial candidate data set.\cr 
         The variable names from \code{data} or \code{factor.names} can be used by the constraint.
-        ??? Can the variable names from \code{wholePlotData} also be used ???
+        The variable names from \code{wholePlotData} can NOT be used.
         }
   \item{center}{ requests that optimization is run for the centered model; 
         the design is nevertheless output in non-centered coordinates
@@ -157,7 +157,7 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
     model matrix of the design, using the formula as specified in the call. \cr
     Function \code{Dopt.augment} preserves additional variables (e.g. responses) that 
     have been added to the design \code{design} before augmenting. Note, however, that 
-    the response data are NOT used in deciding about which points to augment the design with. ?????
+    the response data are NOT used in deciding about which points to augment the design with.
     
     The attribute \code{run.order} provides the run number in standard order (as returned from 
     function \code{\link[AlgDesign]{optFederov}} in package \pkg{AlgDesign}) as well 

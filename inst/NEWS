@@ -5,6 +5,12 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+Version 0.7-1, 03/04/2010
+- added dependency on DoE.base version 0.10,
+  since summary of several design types from DoE.wrapper (especially type Dopt) 
+  was not as intended with earlier versions of DoE.base
+- fixed documentation bugs for Dopt.design
+
 Version 0.7, 26/03/2010
 - added function Dopt.design for D-optimal designs with or without blocking
   based on functions optFederov and optBlock of package AlgDesign
