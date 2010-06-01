@@ -5,6 +5,12 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+
+Version 0.7-2, 01/06/2010
+Bug fixes to Dopt.augment: 
+- did not work with candidate set
+- check for names of candidate set only checked first name
+
 Version 0.7-1, 03/04/2010
 - added dependency on DoE.base version 0.10,
   since summary of several design types from DoE.wrapper (especially type Dopt) 
