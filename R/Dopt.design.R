@@ -96,8 +96,16 @@ Dopt.design <- function(nruns, data=NULL, formula=~.,
         if (randomize) ord <- sample(nruns) else ord <- 1:nruns
         aus <- plan$design[ord,]
         class(aus) <- c("design", "data.frame")
-    
-       desnum(aus) <- model.matrix(formula(formula), data=aus)
+        hilf <- model.matrix(formula(formula), data=aus)
+        ## fixed August 2010
+        if (ncol(hilf) < ncol(aus)){ 
+             ## add missing columns
+             if ("design" %in% class(data)) hilf2 <- desnum(data)[plan$rows,]
+                 else hilf2 <- as.matrix(as.data.frame(lapply(data[plan$rows,], "as.numeric")))
+             sp <- which(!colnames(hilf2) %in% colnames(hilf))
+             hilf <- cbind(hilf, hilf2[,sp])
+             }
+       desnum(aus) <- hilf
        rownames(desnum(aus)) <- rownames(aus) <- 1:nrow(aus)
        run.order(aus) <- data.frame(run.no.in.std.order=plan$rows[ord], run.no=1:nruns, run.no.std.rp=plan$rows[ord])
        }

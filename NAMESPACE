@@ -1,4 +1,4 @@
      import(FrF2,DoE.base,lhs,AlgDesign)
      export("lhs.design", "lhs.augment", 
             "ccd.design", "ccd.augment", "bbd.design", "Dopt.design", "Dopt.augment",
-            "Scalc", "compare")
+            "Scalc", "compare", "rsmformula", "code.design")

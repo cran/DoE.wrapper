@@ -20,10 +20,10 @@ Dopt.augment <- function(design, m=1, formula=NULL, candidates=NULL, constraint=
            candidates <- qua.design(candidates, quantitative=quantitative)
        }
        else {
-       if (!(is.matrix(candidates) | is.data.frame(candidates)))
+       if (!is.matrix(candidates) | is.data.frame(candidates))
            stop("candidates must be a matrix or data frame")
            if (!ncol(candidates)==di$nfactors) stop("wrong number of columns in candidates")
-           if (!(identical(colnames(candidates),names(di$factor.names)) | is.null(colnames(candidates))))
+           if (!(colnames(candidates) ==names(di$factor.names) | is.null(colnames(candidates))))
                   stop("column names of candidates do not match factor names of design")
            if (is.null(colnames(candidates))) colnames(candidates) <- names(di$factor.names)
            }

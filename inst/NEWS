@@ -5,19 +5,28 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+10/08/2010, Version 8.0
+- added functions rsmformula and code.design for easy usage of function rsm 
+  and its post-processing methods
+- added names to the coding element of bbd designs
+- added a coding element to the design.info attribute of designs of type lhs, 
+  in order to support their analysis with the standard second order methods of 
+  package rsm
+- clarified documentation of ncenter for ccd.augment 
+- omitted the meshratio quality criterion from lhs objects, 
+  because it severely slowed down generation of larger designs
+- modified NEWS file for better viewing with function news()
+Bugfixes:
+- Dopt.design would not always work, because of column number mismatches between 
+  design itself and desnum for candidate data sets with extra columns. 
 
-Version 0.7-2, 01/06/2010
-Bug fixes to Dopt.augment: 
-- did not work with candidate set
-- check for names of candidate set only checked first name
-
-Version 0.7-1, 03/04/2010
+03/04/2010, Version 0.7-1
 - added dependency on DoE.base version 0.10,
   since summary of several design types from DoE.wrapper (especially type Dopt) 
   was not as intended with earlier versions of DoE.base
 - fixed documentation bugs for Dopt.design
 
-Version 0.7, 26/03/2010
+26/03/2010, Version 0.7
 - added function Dopt.design for D-optimal designs with or without blocking
   based on functions optFederov and optBlock of package AlgDesign
 - added function Dopt.augment for augmenting various designs with 
@@ -27,18 +36,18 @@ Version 0.7, 26/03/2010
 - bug fix: creator element of designs created with ccd.design now gives 
   the original call, not interim calls
 
-Version 0.6-2, 14/09/2009
+14/09/2009, Version 0.6-2
 - made all factor names valid R names in all design generating functions
 - bug fix: design.info attribute for blocked Box-Behnken designs 
   did not include the bbreps and wbreps elements, which caused 
   e.g. function summary.design to fail on them; for avoiding unnecessary 
   case distinctions, these elements (always 1) have been added.
 
-Version 0.6-1, 07/09/2009
+07/09/2009, Version 0.6-1
 - updated links in help files to work with R 2.10.0 onwards
 - renamed package help file (typo correction)
 
-Version 0.6, 25/08/2009
+25/08/2009, Version 0.6
 - added ncenter element to design.info attribute of bbd designs
 - added block.name element to design.info attribute of ccd designs
   even if the cube portion is not blocked 
@@ -47,5 +56,5 @@ Version 0.6, 25/08/2009
 - added test cases for function qua.design with design functions
   that are not available in package DoE.base
 
-First version on CRAN: 
-Version 0.5, 21/08/2009
+21/08/2009, Version 0.5
+First version on CRAN

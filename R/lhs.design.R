@@ -1,5 +1,5 @@
 lhs.design <- function(nruns, nfactors, type="optimum", factor.names=NULL, seed=NULL, digits=NULL, nlevels=nruns, 
-     randomize = FALSE, ...){
+     default.levels = c(0,1), randomize = FALSE, ...){
      creator <- sys.call()
      if (!type %in% c("genetic","improved","maximin","optimum","random","dmax","faure","strauss","fact"))
            stop("invalid type")
@@ -42,7 +42,7 @@ lhs.design <- function(nruns, nfactors, type="optimum", factor.names=NULL, seed=
          }
 
      if (is.null(factor.names)){ 
-          factor.names <- rep(list(c(0,1)),nfactors)
+          factor.names <- rep(list(default.levels),nfactors)
           names(factor.names) <- paste("X",1:nfactors,sep="")
           }
      if (!length(factor.names)==nfactors) stop("factor.names must have one entry for each factor.")
@@ -54,7 +54,7 @@ lhs.design <- function(nruns, nfactors, type="optimum", factor.names=NULL, seed=
         if (is.null(names(factor.names))) names(factor.names) <- paste("X",1:nfactors,sep="")
         }
      if (is.character(factor.names)){
-        hilf <- rep(list(c(0,1)),nfactors)
+        hilf <- rep(list(default.levels),nfactors)
         names(hilf) <- factor.names
         factor.names <- hilf
      }
@@ -110,9 +110,14 @@ lhs.design <- function(nruns, nfactors, type="optimum", factor.names=NULL, seed=
      ## append optimality information
      di$optimality.criteria <- list(S=Scalc(desnum),
                           mindist=mindist(desnum),
-                          meshRatio=meshRatio(desnum),
                           coverage=coverage(desnum),
                           det.cor=det(cor(desnum)))
+## omitted meshRatio because of excessive duration
+
+     ## add coding information for potential use with function rsm from package rsm
+     di$coding <- lapply(make.formulas(paste("x",1:nfactors,sep=""), factor.names),
+                       "as.formula",env=NULL)
+     names(di$coding) <- paste("x",1:nfactors,sep="")
      design.info(design) <- di
 
         run.no.in.std.order <- run.no <- run.no.std.rp <- 1:nruns

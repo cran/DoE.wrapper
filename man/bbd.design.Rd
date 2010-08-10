@@ -17,7 +17,8 @@ bbd.design(nfactors, ncenter=4, factor.names = NULL, default.levels=c(-1,1),
   \item{factor.names}{ list of scale end values for each factor 
         (the middle value is calculated);\cr 
         names are used as variable names; \cr
-        \bold{the names must not be x1, x2, ..., as these are used internally};\cr
+        \bold{the names must not be x1, x2, ..., as these are used for the variables 
+        in coded units};\cr
         if the list is not named, the variable names are A, B and so forth;
         in the coded units used in attribute desnum, \code{-1} corresponds to the smaller, \code{+1} to the larger value. }
   \item{default.levels}{ default levels (vector of length 2) for all factors for 

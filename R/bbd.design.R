@@ -59,6 +59,7 @@ bbd.design <- function(nfactors, ncenter=4, factor.names = NULL, default.levels=
           }
     di <- c(di, list(randomize=randomize, seed=seed, replications=1, repeat.only=FALSE, ncenter=ncenter, creator=creator, 
         coding=make.formulas(paste("x",1:nfactors,sep=""),factor.names)))
+    names(di$coding) <- paste("x",1:nfactors,sep="")
     design.info(design) <- di
     design
 }

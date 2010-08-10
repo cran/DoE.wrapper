@@ -20,8 +20,10 @@ ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL,
   \item{nfactors}{ number of factors }
   \item{factor.names}{ list of cube corner values for each factor; 
         names are used as variable names; 
+        \bold{the names must not be x1, x2, ..., as these are used for the variables 
+        in coded units};\cr
         if the list is not named, the variable names are X1, X2 and so forth;
-        in coded units, \code{-1} corresponds to the smaller, \code{+1} to the larger value. }
+        in coded units, \code{-1} corresponds to the smaller, \code{+1} to the larger value.}
   \item{default.levels}{ default levels (vector of length 2) for all factors for 
         which no specific levels are given }
   \item{ncube}{ integer number of cube points (without center points for the cube) }
