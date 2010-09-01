@@ -189,7 +189,6 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
   Wheeler, R.E. (2004). \emph{Comments on algorithmic design}. Vignette accompanying package \pkg{AlgDesign}. 
        \url{../../AlgDesign/doc/AlgDesign.pdf}.
 }
-\seealso{ See also \code{\link[AlgDesign]{optFederov}} }
 \examples{
    ## a full quadratic model with constraint in three quantitative factors 
    plan <- Dopt.design(36,factor.names=list(eins=c(100,250),zwei=c(10,30),drei=c(-25,25)),
@@ -226,7 +225,7 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
              formula=~.+gender+cause:consequences+gender.story:consequences+
                  gender:consequences+Age:cause+gender:gender.story)
 }
-\seealso{ See Also \code{\link[AlgDesign]{optFederov}}, \code{\link[DoE.base]{fac.design}}, 
+\seealso{ See also \code{\link[AlgDesign]{optFederov}}, \code{\link[DoE.base]{fac.design}}, 
     \code{\link[AlgDesign:expand.formula]{quad}}, \code{\link[AlgDesign:expand.formula]{cubic}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

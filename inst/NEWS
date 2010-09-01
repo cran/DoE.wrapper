@@ -5,6 +5,9 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+01/09/2010, Version 8.0-1
+- fixed duplicate seealso sections in two help files
+
 10/08/2010, Version 8.0
 - added functions rsmformula and code.design for easy usage of function rsm 
   and its post-processing methods
