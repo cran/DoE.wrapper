@@ -64,9 +64,12 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
   \item{constraint}{ a condition (character string!) used for reducing the candidate 
         set to admissible points only. 
         \code{constraint} is evaluated on the specified data set or after automatic creation 
-        of a full factorial candidate data set.\cr 
+        of a full factorial candidate data set. \cr 
         The variable names from \code{data} or \code{factor.names} can be used by the constraint.
-        The variable names from \code{wholePlotData} can NOT be used.
+        The variable names from \code{wholePlotData} can NOT be used. \cr
+        See \code{\link[base]{Syntax}} and \code{\link[base]{Logic}} 
+        for an explanation of the syntax of general and especially logical 
+        R expressions.
         }
   \item{center}{ requests that optimization is run for the centered model; 
         the design is nevertheless output in non-centered coordinates

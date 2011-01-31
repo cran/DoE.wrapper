@@ -37,7 +37,6 @@ bbd.design <- function(nfactors, ncenter=4, factor.names = NULL, default.levels=
     ## make all factor names valid R names
     names(factor.names) <- make.names(names(factor.names), unique=TRUE)
 
-
     if (randomize & !is.null(seed)) set.seed(seed)
     aus <- bbd(nfactors, n0=ncenter, 
         block = if (is.null(block.name)) FALSE else block.name, randomize=randomize, 
@@ -50,7 +49,10 @@ bbd.design <- function(nfactors, ncenter=4, factor.names = NULL, default.levels=
     desnum <- model.matrix(~.,desnum)[,-1]
     rownames(design) <- rownames(desnum) <- 1:nrow(aus)
     desnum(design) <- desnum
-    run.order(design) <- data.frame(run.no.in.std.order=rownames(aus), run.no=1:nrow(aus), run.no.std.rp=rownames(aus))
+    ## changes added 27 01 2011 (for proper ordering of design)
+    orig.no.levord <- sort(as.numeric(rownames(aus)),index=TRUE)$ix
+    orig.no <- factor(rownames(aus), levels=unique(rownames(aus)[orig.no.levord]))
+    run.order(design) <- data.frame(run.no.in.std.order=orig.no, run.no=1:nrow(aus), run.no.std.rp=rownames(aus))
     di <- list(type="bbd", nruns=nrow(design), nfactors=nfactors, factor.names=factor.names, quantitative=rep(TRUE, nfactors))
     if (!is.null(block.name)){ blocklist <- list(nblocks=if(nfactors==4) 3 else 2,
                blocksize=if(nfactors==4) 12 else 24, block.name=block.name, bbreps=1, wbreps=1)

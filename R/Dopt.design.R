@@ -107,7 +107,9 @@ Dopt.design <- function(nruns, data=NULL, formula=~.,
              }
        desnum(aus) <- hilf
        rownames(desnum(aus)) <- rownames(aus) <- 1:nrow(aus)
-       run.order(aus) <- data.frame(run.no.in.std.order=plan$rows[ord], run.no=1:nruns, run.no.std.rp=plan$rows[ord])
+       ## changed 27.1.2011: make run.no.in.std.order a factor with proper ordering
+       run.order(aus) <- data.frame(run.no.in.std.order=factor(plan$rows[ord],levels=1:nrow(data)), 
+             run.no=1:nruns, run.no.std.rp=plan$rows[ord])
        }
     else{
       ## blocks with or without wholeBlockData

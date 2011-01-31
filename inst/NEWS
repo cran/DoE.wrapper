@@ -5,6 +5,11 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+31/01/2011, Version 8.0-2
+- made run.no.in.std.order factor with properly ordered levels for bbd.design
+  and unblocked version of Dopt.design
+  (standard order currently not so useful for blocked designs)
+
 01/09/2010, Version 8.0-1
 - fixed duplicate seealso sections in two help files
 
