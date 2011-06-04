@@ -14,3 +14,28 @@ code.design <- function(design){
         coded.data(design, formulas=di$coding)
         }
 }
+
+decode.design <- function(design){
+      ## function that applies coding information for subsequent application of rsm and its methods
+      if (!"design" %in% class(design)) stop("decode.design is applicable to class design objects only.")
+      if (!"coded.data" %in% class(design)) stop("decode.design is applicable to class coded.data objects only.")
+      
+      di <- design.info(design)
+      di$coding <- attr(design, "codings")
+      fn <- factor.names(design)
+      nm = names(fn)
+       for (f in di$coding) {
+            info = parse.coding(f)
+            cod = info$names[["coded"]]
+            org = info$names[["orig"]]
+            if (!is.null(fn[[cod]])) {
+                fn[[cod]] = info$const[["divisor"]] * fn[[cod]] + 
+                  info$const[["center"]]
+                nm[nm == cod] = org
+            }
+        }
+      names(fn) <- nm
+      di$factor.names <- fn
+      design.info(design) <- di
+      decode.data(design)
+}

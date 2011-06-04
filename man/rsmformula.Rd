@@ -1,16 +1,20 @@
 \name{rsmformula}
 \alias{rsmformula}
 \alias{code.design}
+\alias{decode.design}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Functions for supporting response surface analysis with package rsm }
 \description{
     These functions support response surface analysis with package rsm. 
     Function rsmformula creates a model formula for use with function rsm, 
-    using the FO, TWI and PQ notation. Function code.design prepares a ccd, bbd 
-    or lhs design from this package for convenient use with package rsm functionality.
+    using the FO, TWI and PQ notation. Function code.design prepares a fractional 
+    factorial 2-level design with center points from package FrF2 or a ccd, bbd 
+    or lhs design from this package for convenient use with package rsm functionality, 
+    function decode.design reverses the coding action.
     }
 \usage{
 code.design(design)
+decode.design(design)
 rsmformula(design, response=NULL, factor.names=NULL, 
     use.blockvar = TRUE, degree=2, coded=TRUE, ...)
 }
@@ -38,7 +42,8 @@ rsmformula(design, response=NULL, factor.names=NULL,
 \details{
    Function \code{code.design} rescales the variables of a design with quantitative 
    variables according to the information stored in the \code{coding} element of 
-   the \code{design.info} attribute of \code{design}. 
+   the \code{design.info} attribute of \code{design}, 
+   function \code{decode.design} rescales a coded design to original units. 
 
    Function \code{rsmformula} creates a formula for use with function \code{\link[rsm:rsm]{rsm}}. 
    If this function is created in coded variable names (which is the default), 
@@ -69,12 +74,13 @@ rsmformula(design, response=NULL, factor.names=NULL,
    \code{\link[rsm]{rsm}} model. This only makes sense for first order models: 
    function \code{\link[rsm]{steepest}} always assesses the slope at the origin; 
    for first order models, it does not matter where the slope is assessed. For models 
-   with order (=\code{degree}) 1.5 or 2, the \code{steepest} analysis is adequate only for the exceptional 
-   case that 0 is the point of interest.
+   with order (=\code{degree}) 1.5 or 2, the \code{steepest} analysis in original units 
+   is adequate only for the exceptional case that 0 is the point of interest.
    }
 \value{
     Function \code{code.design} returns a \code{\link[rsm:coded.data]{coded.data}} object 
-    for usage with function \code{\link[rsm:rsm]{rsm}}.
+    for usage with function \code{\link[rsm:rsm]{rsm}}; this object can be returned to its 
+    original state by applying function \code{decode.design}. 
 
     Function \code{rsmformula} returns a formula with an \code{FO} (=first order) portion, 
     for \code{degree=1.5} additionally a \code{TWI} (=two factor interactions, 2fis) portion,
@@ -106,6 +112,7 @@ rsmformula(design, response=NULL, factor.names=NULL,
   ## coding
   plan.c <- code.design(plan)
   plan.c
+  decode.design(plan.c)
   
   ## first order analysis
      ## formulae needed for first order models:
