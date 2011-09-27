@@ -53,6 +53,9 @@ Dopt.augment <- function(design, m=1, formula=NULL, candidates=NULL, constraint=
              formula <- formula(add.response(design, rnorm(di$nruns)))[c(1,3)]
          else formula <- formula(design)[c(1,3)]
          }
+    else if (is.character(formula)) formula <- try(as.formula(formula))
+    if ("try-error" %in% class(formula)) stop("invalid character string for formula")
+    
     if (!is.null(seed)) set.seed(seed)
     plan <- optFederov(formula, rbind(design[,names(di$factor.names)], candidates),
            nTrials=nruns, rows=1:di$nruns, augment=TRUE,

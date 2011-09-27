@@ -343,7 +343,7 @@ flush(stderr()); flush(stdout())
 ### Name: rsmformula
 ### Title: Functions for supporting response surface analysis with package
 ###   rsm
-### Aliases: rsmformula code.design
+### Aliases: rsmformula code.design decode.design
 ### Keywords: array design
 
 ### ** Examples
@@ -359,6 +359,7 @@ flush(stderr()); flush(stdout())
   ## coding
   plan.c <- code.design(plan)
   plan.c
+  decode.design(plan.c)
   
   ## first order analysis
      ## formulae needed for first order models:

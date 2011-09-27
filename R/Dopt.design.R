@@ -19,11 +19,17 @@ Dopt.design <- function(nruns, data=NULL, formula=~.,
     }
     if (!identical(blocks,1) & !sum(blocks)==nruns) stop("If specified, blocks must sum to nruns")
     
+    ## transform character specification of formula
+    if (is.character(formula)) formula <- try(as.formula(formula))
+    if ("try-error" %in% class(formula)) stop("invalid character string for formula")
+    
     ## provide nfactors
-    ## nrow(attr(terms(formula(formula), data=data),"factors")) ??? was war das denn ???
     if (!is.null(data)) nfactors <- ncol(data)
     else if (!is.null(factor.names)) nfactors <- length(factor.names)
-       else if (!is.null(nlevels)) nfactors <- length(nlevels)
+       else if (!is.null(nlevels)) {
+          nfactors <- length(nlevels)
+          factor.names <- Letters[1:nfactors]
+       }
     
     ## check digits
     if (!is.null(digits) & is.null(data)){ 

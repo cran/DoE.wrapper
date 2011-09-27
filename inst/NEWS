@@ -5,6 +5,15 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+27/09/2011, Version 0.8-4
+  - bug fix: a character string as a formula in Dopt.design led to unwarned 
+    wrong results for the design (wrong default formula used!). Although a character 
+    string was not appropriate according to the documentation, this is of course 
+    inacceptable. Fix: a character string is now allowed, if it can be coerced to 
+    a formula for both Dopt.design and Dopt.augment
+  - minor improvements on the documentation: improved documentation of value of 
+    Dopt.design, and added Dopt.design and Dopt.augment to some see also sections
+
 04/06/2011, Version 0.8-3
   - added function decode.design for making sure that coding information 
     is available at all times for response surface designs

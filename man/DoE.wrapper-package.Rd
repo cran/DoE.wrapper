@@ -48,8 +48,9 @@
       Process and Product Optimization Using Designed Experiments}. Wiley, New York.
 }
 \author{ Ulrike Groemping }
-\note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
+\note{ This package is currently under development. Some changes are to be expected in the near future.}
 \seealso{ See also \code{\link{ccd.design}}, \code{\link{ccd.augment}}, \code{\link{bbd.design}}, \code{\link{lhs.design}}, 
+    \code{\link{Dopt.design}}, \code{\link{Dopt.augment}},
     \code{\link[lhs]{lhs-package}}, \code{\link[rsm]{rsm}}, \code{\link[AlgDesign]{optFederov}}, 
     \code{\link[AlgDesign]{optBlock}}, \code{\link{compare}}, \code{\link[FrF2]{FrF2}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

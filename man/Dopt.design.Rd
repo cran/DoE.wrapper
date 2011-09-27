@@ -17,7 +17,7 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
   \item{nruns}{ number of runs in the requested design }
    \item{data}{ data frame or matrix of candidate design points;\cr
         if \code{data} is specified, \code{factor.names} and \code{levels} are ignored}
-   \item{formula}{ a model formula (NOT: a character string!), 
+   \item{formula}{ a model formula (starting with a tilde), 
         for the estimation of which a D-optimal design is sought;\cr
         it can contain all column names from \code{data} 
         or elements or element names from \code{factor.names}, respectively;\cr
@@ -174,8 +174,9 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
     which the data were rounded. 
     For blocked and splitplot designs, the list contains additional information on numbers and sizes of blocks or plots, 
     as well as the number of whole plot factors (which are always the first few factors) and split-plot factors.\cr
-    The list contains further entries regarding the optimality that has been achieved 
-    (\code{D}, \code{Dea} and \code{A}). 
+    The list contains a list of optimality criteria as calculated by function \code{\link[AlgDesign]{optFederov}}, 
+    see documentation there) 
+    with elements \code{D}, \code{Dea}, \code{A} and \code{G}. 
     
     (Note that \code{replications} is always 1 and \code{repeat.only} is always FALSE; 
     these elements are only present to fulfill the formal requirements for class \code{design}.
@@ -229,7 +230,8 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
                  gender:consequences+Age:cause+gender:gender.story)
 }
 \seealso{ See also \code{\link[AlgDesign]{optFederov}}, \code{\link[DoE.base]{fac.design}}, 
-    \code{\link[AlgDesign:expand.formula]{quad}}, \code{\link[AlgDesign:expand.formula]{cubic}} }
+    \code{\link[AlgDesign:expand.formula]{quad}}, \code{\link[AlgDesign:expand.formula]{cubic}},
+    \code{\link{Dopt.augment}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ array }

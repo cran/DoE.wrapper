@@ -18,7 +18,7 @@ Dopt.augment(design, m=1, formula=NULL, candidates=NULL, constraint=NULL,
         crossed or parameter design; it also must not be replicated with repeat.only replications. 
         }
   \item{m}{integer number of additional points to add to design \code{design} }
-  \item{formula}{ a model formula, for the estimation of which a D-optimal design is sought;\cr
+  \item{formula}{ a model formula (starting with a tilde), for the estimation of which a D-optimal design is sought;\cr
         it can contain all column names from \code{data} 
         or elements or element names from \code{factor.names}, respectively;\cr
         usage of the \dQuote{.}-notation for \dQuote{all variables} from \code{data} or \code{factor.names} 
@@ -144,7 +144,8 @@ Dopt.augment(design, m=1, formula=NULL, candidates=NULL, constraint=NULL,
    
 }
 \seealso{ See also \code{\link[AlgDesign]{optFederov}}, \code{\link[DoE.base]{fac.design}}, 
-    \code{\link[AlgDesign:expand.formula]{quad}}, \code{\link[AlgDesign:expand.formula]{cubic}} }
+    \code{\link[AlgDesign:expand.formula]{quad}}, \code{\link[AlgDesign:expand.formula]{cubic}}, 
+    \code{\link{Dopt.design}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ array }
