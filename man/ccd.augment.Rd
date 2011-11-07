@@ -1,11 +1,10 @@
 \name{ccd.augment}
 \alias{ccd.augment}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Functions for accessing central composite designs from package rsm }
+\title{ Function for augmenting an existing cube with a star portion, using package rsm }
 \description{
-  Functions for accessing central composite designs from package rsm, 
-  and for augmenting existing fractional factorials in case of a late decision 
-  for a frequential procedure. 
+  Function for augmenting an existing fractional factorial with a star portion 
+  in case of a late decision for a sequential procedure. 
 }
 \usage{
 ccd.augment(cube, ncenter = 4, columns="all", block.name="Block.ccd",

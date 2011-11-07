@@ -122,8 +122,8 @@ nameEx("ccd.augment")
 flush(stderr()); flush(stdout())
 
 ### Name: ccd.augment
-### Title: Functions for accessing central composite designs from package
-###   rsm
+### Title: Function for augmenting an existing cube with a star portion,
+###   using package rsm
 ### Aliases: ccd.augment
 ### Keywords: array design
 
@@ -170,7 +170,7 @@ nameEx("ccd.design")
 flush(stderr()); flush(stdout())
 
 ### Name: ccd.design
-### Title: Functions for accessing central composite designs from package
+### Title: Function for accessing central composite designs from package
 ###   rsm
 ### Aliases: ccd.design
 ### Keywords: array design

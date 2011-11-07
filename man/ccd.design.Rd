@@ -1,11 +1,10 @@
 \name{ccd.design}
 \alias{ccd.design}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Functions for accessing central composite designs from package rsm }
+\title{ Function for accessing central composite designs from package rsm }
 \description{
-  Functions for accessing central composite designs from package rsm, 
-  and for augmenting existing fractional factorials in case of a late decision 
-  for a frequential procedure. 
+  Function for accessing central composite designs from package rsm, 
+  with automatic creation of an appropriate cube portion 
 }
 \usage{
 ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL, 
