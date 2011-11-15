@@ -5,6 +5,11 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+15/11/2011, Version 0.8-6
+  - bug fix: rownames and run order were not properly matched for 
+    ccd.design and ccd.augment (relevant for users who programmed on these, 
+    or for users who got confused about the logic behind these)
+
 07/11/2011, Version 0.8-5
   - bug fix on description and documentation: 
     package description text has been updated, 

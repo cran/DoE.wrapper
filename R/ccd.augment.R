@@ -141,7 +141,8 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     colnames(desnum)[2:(1+nfactors)] <- names(factor.names)
     
     desnum(design) <- desnum
-    run.order(design) <- data.frame(run.no.in.std.order=row.names(aus),run.no=1:nrow(aus),run.no.std.rp =rownames(aus))
+    ## bug fix Nov 15: aus replaced by design (mismatch of run.order with row.names)
+    run.order(design) <- data.frame(run.no.in.std.order=row.names(design),run.no=1:nrow(design),run.no.std.rp =rownames(design))
     di$type <- "ccd"
     di$block.name <- block.name
     di$coding <- lapply(attr(aus,"coding"),"as.formula",env=NULL)[map[[1]]]
