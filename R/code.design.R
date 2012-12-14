@@ -2,6 +2,10 @@ code.design <- function(design){
       ## function that applies coding information for subsequent application of rsm and its methods
       if (!"design" %in% class(design)) stop("code.design is applicable to class design objects only.")
       di <- design.info(design)
+#! --- RVL suggestion ---
+# (coded.data `undesign`s stuff now for fear of conflicts. Guess the opposite happens)
+      dn <- attr(design, "desnum")
+      ro <- attr(design, "run.order")
       if (is.null(di$coding)) {
           warning("code.design did not change anything,\nbecause the design does not contain coding information.")
           return(design)
@@ -11,25 +15,35 @@ code.design <- function(design){
         hilf <- rep(list(c(-1,1)), di$nfactors)
         names(hilf) <- paste("x",1:di$nfactors, sep="")
         design.info(design)$factor.names <- hilf
-        coded.data(design, formulas=di$coding)
+#! --- RVL suggestion ---
+        des <- coded.data(design, formulas=di$coding)
         }
+# Need to add back info...
+      class(des) <- c("design", class(des))
+      design.info(des) <- di
+      attr(des, "desnum") <- dn
+      attr(des, "run.order") <- ro
+      des
+#! --- end RVL suggestion ---
 }
 
 decode.design <- function(design){
       ## function that applies coding information for subsequent application of rsm and its methods
       if (!"design" %in% class(design)) stop("decode.design is applicable to class design objects only.")
       if (!"coded.data" %in% class(design)) stop("decode.design is applicable to class coded.data objects only.")
-      
+
       di <- design.info(design)
       di$coding <- attr(design, "codings")
       fn <- factor.names(design)
       nm = names(fn)
        for (f in di$coding) {
-            info = parse.coding(f)
+#! --- RVL suggestion ---
+            info = rsm:::.parse.coding(f)   # WAS parse.coding(f)
+#! --- end RVL suggestion ---
             cod = info$names[["coded"]]
             org = info$names[["orig"]]
             if (!is.null(fn[[cod]])) {
-                fn[[cod]] = info$const[["divisor"]] * fn[[cod]] + 
+                fn[[cod]] = info$const[["divisor"]] * fn[[cod]] +
                   info$const[["center"]]
                 nm[nm == cod] = org
             }

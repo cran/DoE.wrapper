@@ -1,7 +1,8 @@
 
-R version 2.10.1 (2009-12-14)
-Copyright (C) 2009 The R Foundation for Statistical Computing
+R version 2.15.2 (2012-10-26) -- "Trick or Treat"
+Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -21,7 +22,6 @@ Loading required package: FrF2
 Loading required package: BsMD
 Loading required package: scatterplot3d
 Loading required package: igraph
-Loading required package: sfsmisc
 Loading required package: DoE.base
 Loading required package: relimp
 Loading Tcl/Tk interface ... done
@@ -30,41 +30,55 @@ Loading required package: vcd
 Loading required package: MASS
 Loading required package: grid
 Loading required package: colorspace
+Loading required package: conf.design
 
 Attaching package: 'DoE.base'
 
+The following object(s) are masked from 'package:conf.design':
 
-	The following object(s) are masked from package:relimp :
+    factorize.factor
 
-	 showData 
+The following object(s) are masked from 'package:relimp':
 
+    showData
 
-	The following object(s) are masked from package:stats :
+The following object(s) are masked from 'package:stats':
 
-	 lm 
+    aov, lm
 
+The following object(s) are masked from 'package:graphics':
 
-	The following object(s) are masked from package:graphics :
+    plot.design
 
-	 plot.design 
+The following object(s) are masked from 'package:utils':
 
-
-	The following object(s) are masked from package:utils :
-
-	 fix 
+    fix
 
 
 Attaching package: 'FrF2'
 
+The following object(s) are masked from 'package:BsMD':
 
-	The following object(s) are masked from package:BsMD :
-
-	 DanielPlot 
+    DanielPlot
 
 Loading required package: rsm
+
+Attaching package: 'rsm'
+
+The following object(s) are masked from 'package:conf.design':
+
+    join
+
 Loading required package: lhs
 Loading required package: DiceDesign
 Loading required package: AlgDesign
+
+Attaching package: 'DoE.wrapper'
+
+The following object(s) are masked from 'package:igraph':
+
+    compare
+
 > ## try out all available designs with and without factor names
 > set.seed(1234)
 > 
@@ -324,8 +338,8 @@ Call:
 lm.default(formula = fo, data = model.frame(fo, data = formula))
 
 Residuals:
-      Min        1Q    Median        3Q       Max 
--1.367240 -0.352000 -0.009798  0.265763  1.704312 
+    Min      1Q  Median      3Q     Max 
+-1.3672 -0.3520 -0.0098  0.2658  1.7043 
 
 Coefficients:
               Estimate Std. Error t value Pr(>|t|)  
@@ -773,4 +787,11 @@ Residual standard error: 1.324 on 27 degrees of freedom
 Multiple R-squared: 0.1669,	Adjusted R-squared: -0.07995 
 F-statistic: 0.6761 on 8 and 27 DF,  p-value: 0.7081 
 
+WARNING: This is a split plot design, whole plot effects may have larger variance!
+         p-values for whole plot effects may be misleadingly low!
+The whole plot effects are:
+[1] semester reader  
 > 
+> proc.time()
+   user  system elapsed 
+   0.85    0.14    0.99 

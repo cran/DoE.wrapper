@@ -25,7 +25,7 @@ bbd.design(nfactors, ncenter=4, factor.names = NULL, default.levels=c(-1,1),
       which no specific levels are given; must consist of two numeric values for the scale ends, 
       the default middle level is calculated }
   \item{block.name}{ name of block factor that distinguishes between the blocks;
-        blocks are usable for nfactors=4 and nfactors=5 only, \code{blockname} is ignored otherwise. }
+        blocks are usable for nfactors=4 and nfactors=5 only, \code{block.name} is ignored otherwise. }
   \item{randomize}{ logical that indicates whether or not randomization should occur }
   \item{seed}{ seed for random number generation in randomization }
   \item{\dots}{ reserved for future usage}

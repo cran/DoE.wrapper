@@ -63,7 +63,7 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     if (is.null(di$block.gen)){
     ### treat case with generators
     if (!k >= nfactors){
-        aus <- ccd(k,
+        aus <- .ccd.1.41(k,
             generators=generators,
             blocks = block.name, n0 = ncenter, alpha = alpha,
             wbreps = wbreps, bbreps = bbreps, randomize = randomize,
@@ -74,7 +74,7 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     else{
     ### treat case without generators
     if (k>=nfactors) wbreps <- 2^(k-nfactors)*wbreps
-    aus <- ccd(nfactors,
+    aus <- .ccd.1.41(nfactors,
         blocks = block.name, n0 = ncenter, alpha = alpha,
         wbreps = wbreps, bbreps = bbreps, randomize = randomize,
         coding = make.formulas(paste("x",map[[1]],sep=""),factor.names[map[[1]]])
@@ -89,7 +89,7 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     if (is.vector(block.form)) block.form <- Yates[block.form]
     block.form <- paste("c(",paste(sapply(block.form, function(obj) paste(paste("x", obj, sep=""),collapse="*")),collapse=","),")")
     if (!k >= nfactors){
-        aus <- ccd(k,
+        aus <- .ccd.1.41(k,
             generators=generators,
             blocks = as.formula(paste(block.name,block.form,sep="~")), n0 = ncenter, alpha = alpha,
             wbreps = wbreps, bbreps = bbreps, randomize = randomize,
@@ -99,7 +99,7 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     else{
     ### treat case without generators
     if (k > nfactors) wbreps <- 2^(k-nfactors)*wbreps
-    aus <- ccd(nfactors,
+    aus <- .ccd.1.41(nfactors,
         blocks = as.formula(paste(block.name,block.form,sep="~")), n0 = ncenter, alpha = alpha,
         wbreps = wbreps, bbreps = bbreps, randomize = randomize,
         coding = make.formulas(paste("x",map[[1]],sep=""),factor.names[map[[1]]])
@@ -114,12 +114,12 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     ### relates to run number in standard order as created by FrF2, which is different from that in ccd
     rostd <- run.order(cube)$run.no.in.std.order
     if (!is.numeric(rostd)) rostd <- sapply(strsplit(rostd, ".", fixed=TRUE), function(obj) as.numeric(obj[1]))
-    rn <- c(paste(paste("C", aus[,1][-star.points],sep=""), rostd,sep="."), rownames(aus)[star.points])
-    rn[which(!iscube(cube))] <- paste(paste("C", aus[which(!iscube(cube)),1],sep=""),(n.c+1):(n.c+ncenter[1]),sep=".")
+    rn <- c(paste(paste("C", aus[[block.name]][-star.points],sep=""), rostd,sep="."), rownames(aus)[star.points])
+    rn[which(!iscube(cube))] <- paste(paste("C", aus[[block.name]][which(!iscube(cube))],sep=""),(n.c+1):(n.c+ncenter[1]),sep=".")
     design <- decode.data(aus)[,-1]   #[,FrF2:::invperm(map[[1]])]
     if (length(more)>0) design <- cbind(design, matrix(NA, nrow=nrow(design), ncol=length(more), dimnames=list(rn, more)))
     design <- rbind(cube[,c(names(factor.names),more)],design[star.points,])
-    design <- cbind(aus[,1],design)
+    design <- cbind(aus[[block.name]],design)
     colnames(design)[1] <- block.name
     rownames(design) <- rn
     desnum <- coded.data(design, formulas=attr(aus,"coding"))

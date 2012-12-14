@@ -38,7 +38,7 @@ bbd.design <- function(nfactors, ncenter=4, factor.names = NULL, default.levels=
     names(factor.names) <- make.names(names(factor.names), unique=TRUE)
 
     if (randomize & !is.null(seed)) set.seed(seed)
-    aus <- bbd(nfactors, n0=ncenter, 
+    aus <- .bbd.1.41(nfactors, n0=ncenter, 
         block = if (is.null(block.name)) FALSE else block.name, randomize=randomize, 
         coding=make.formulas(paste("x",1:nfactors,sep=""),factor.names))
     ## must still be made into design with the usual information available

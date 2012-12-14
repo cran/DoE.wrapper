@@ -5,6 +5,14 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+14/12/2012, Version 0.8-7
+  - incorporated some functions from package rsm (thanks to Russ Lenth), 
+    as the new version 2 of rsm broke DoE.wrapper functionality
+    (interim solution)
+  - minor fix to bbd.design documentation
+  - fixed a row name issue for a special case in ccd.augment
+  - fixed bbd.design test file to also test blocked designs
+  
 15/11/2011, Version 0.8-6
   - bug fix: rownames and run order were not properly matched for 
     ccd.design and ccd.augment (relevant for users who programmed on these, 

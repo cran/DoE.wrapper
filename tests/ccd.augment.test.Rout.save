@@ -1,7 +1,8 @@
 
-R version 2.9.1 Patched (2009-07-22 r48993)
-Copyright (C) 2009 The R Foundation for Statistical Computing
+R version 2.15.2 (2012-10-26) -- "Trick or Treat"
+Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -21,37 +22,63 @@ Loading required package: FrF2
 Loading required package: BsMD
 Loading required package: scatterplot3d
 Loading required package: igraph
-Loading required package: sfsmisc
 Loading required package: DoE.base
-Loading required package: tcltk
+Loading required package: relimp
 Loading Tcl/Tk interface ... done
+Loading required package: tcltk
 Loading required package: vcd
 Loading required package: MASS
 Loading required package: grid
 Loading required package: colorspace
+Loading required package: conf.design
 
 Attaching package: 'DoE.base'
 
+The following object(s) are masked from 'package:conf.design':
 
-	The following object(s) are masked from package:graphics :
+    factorize.factor
 
-	 plot.design 
+The following object(s) are masked from 'package:relimp':
 
+    showData
 
-	The following object(s) are masked from package:utils :
+The following object(s) are masked from 'package:stats':
 
-	 fix 
+    aov, lm
+
+The following object(s) are masked from 'package:graphics':
+
+    plot.design
+
+The following object(s) are masked from 'package:utils':
+
+    fix
 
 
 Attaching package: 'FrF2'
 
+The following object(s) are masked from 'package:BsMD':
 
-	The following object(s) are masked from package:BsMD :
-
-	 DanielPlot 
+    DanielPlot
 
 Loading required package: rsm
+
+Attaching package: 'rsm'
+
+The following object(s) are masked from 'package:conf.design':
+
+    join
+
 Loading required package: lhs
+Loading required package: DiceDesign
+Loading required package: AlgDesign
+
+Attaching package: 'DoE.wrapper'
+
+The following object(s) are masked from 'package:igraph':
+
+    compare
+
 > 
 > ccd.augment(FrF2(8,4,randomize=FALSE),randomize=FALSE)
       Block.ccd  A  B  C  D
@@ -79,11 +106,12 @@ S2.9          2  0  0  0  0
 S2.10         2  0  0  0  0
 S2.11         2  0  0  0  0
 S2.12         2  0  0  0  0
-class=design, type=ccd
+class=design, type= ccd 
 Warning message:
-In ccd(k, generators = generators, blocks = block.name, n0 = ncenter,  :
+In .ccd.1.41(k, generators = generators, blocks = block.name, n0 = ncenter,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > ccd.augment(FrF2(8,3,randomize=FALSE),randomize=FALSE)
+creating full factorial with  8  runs ...
       Block.ccd         A         B         C
 C1.1          1 -1.000000 -1.000000 -1.000000
 C1.2          1  1.000000 -1.000000 -1.000000
@@ -107,7 +135,7 @@ S2.7          2  0.000000  0.000000  0.000000
 S2.8          2  0.000000  0.000000  0.000000
 S2.9          2  0.000000  0.000000  0.000000
 S2.10         2  0.000000  0.000000  0.000000
-class=design, type=ccd
+class=design, type= ccd 
 > 
 > ## resolution V design as basis
 > plan <- FrF2(16,5,ncenter=4,randomize=FALSE)
@@ -150,7 +178,7 @@ S2.11         2  0.000000  0.000000  0.000000  0.000000  0.000000
 S2.12         2  0.000000  0.000000  0.000000  0.000000  0.000000
 S2.13         2  0.000000  0.000000  0.000000  0.000000  0.000000
 S2.14         2  0.000000  0.000000  0.000000  0.000000  0.000000
-class=design, type=ccd
+class=design, type= ccd 
 > ## augmenting design with response
 > ccd.augment(r.plan,4,randomize=FALSE)
       Block.ccd         A         B         C         D         E          y
@@ -188,7 +216,7 @@ S2.11         2  0.000000  0.000000  0.000000  0.000000  0.000000         NA
 S2.12         2  0.000000  0.000000  0.000000  0.000000  0.000000         NA
 S2.13         2  0.000000  0.000000  0.000000  0.000000  0.000000         NA
 S2.14         2  0.000000  0.000000  0.000000  0.000000  0.000000         NA
-class=design, type=ccd
+class=design, type= ccd 
 > 
 > ## estimable design
 > ## basic order
@@ -219,9 +247,9 @@ S2.9          2  0  0  0  0
 S2.10         2  0  0  0  0
 S2.11         2  0  0  0  0
 S2.12         2  0  0  0  0
-class=design, type=ccd
+class=design, type= ccd 
 Warning message:
-In ccd(k, generators = generators, blocks = block.name, n0 = ncenter,  :
+In .ccd.1.41(k, generators = generators, blocks = block.name, n0 = ncenter,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > ## reshuffled
 > ## only one swap
@@ -256,9 +284,9 @@ S2.11         2  0  0  0  0
 S2.12         2  0  0  0  0
 S2.13         2  0  0  0  0
 S2.14         2  0  0  0  0
-class=design, type=ccd
+class=design, type= ccd 
 Warning message:
-In ccd(k, generators = generators, blocks = block.name, n0 = ncenter,  :
+In .ccd.1.41(k, generators = generators, blocks = block.name, n0 = ncenter,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > reshuffled <- FrF2(8,4, estimable=c("AD"),res3=TRUE, default.levels=c(0,100),
 +     factor.names=Letters[22:25],randomize=FALSE)
@@ -294,9 +322,9 @@ S2.11         2 40 25 250 52.5
 S2.12         2 40 25 250 52.5
 S2.13         2 40 25 250 52.5
 S2.14         2 40 25 250 52.5
-class=design, type=ccd
+class=design, type= ccd 
 Warning message:
-In ccd(k, generators = generators, blocks = block.name, n0 = ncenter,  :
+In .ccd.1.41(k, generators = generators, blocks = block.name, n0 = ncenter,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > desnum(ccd.augment(reshuffled,6,randomize=FALSE))
       Block.ccd  T  U  V  W
@@ -329,21 +357,21 @@ S2.12         1  0  0  0  0
 S2.13         1  0  0  0  0
 S2.14         1  0  0  0  0
 Warning message:
-In ccd(k, generators = generators, blocks = block.name, n0 = ncenter,  :
+In .ccd.1.41(k, generators = generators, blocks = block.name, n0 = ncenter,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > ## more reshuffling
 > reshuffled.big <- FrF2(32,7, estimable=c("AC","BC","AB"),randomize=FALSE,
 +    factor.names=Letters[19:25],default.levels=c(10,30))
 > ccd.reshuffled.big <- ccd.augment(reshuffled.big,6,randomize=FALSE)
 Warning message:
-In ccd(k, generators = generators, blocks = block.name, n0 = ncenter,  :
+In .ccd.1.41(k, generators = generators, blocks = block.name, n0 = ncenter,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > reshuffled.big <- FrF2(32,7, estimable=c("AC","BC","AB"),randomize=FALSE,
 +    factor.names=list(T=c(30,50),U=c(24,26),V=c(100,400),W=c(30,75), X=c(0.1,0.7),Y="",Z=""),
 +    default.levels=c(10,30),repl=2)
 > ccd.reshuffled.big <- ccd.augment(reshuffled.big,6,randomize=FALSE)
 Warning message:
-In ccd(k, generators = generators, blocks = block.name, n0 = ncenter,  :
+In .ccd.1.41(k, generators = generators, blocks = block.name, n0 = ncenter,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > ccd.reshuffled.big
       run.no run.no.std.rp Block.ccd        T        U         V         W
@@ -385,44 +413,44 @@ C0.35     35         C0.35         0 40.00000 25.00000  250.0000  52.50000
 C0.36     36         C0.36         0 40.00000 25.00000  250.0000  52.50000
 C0.37     37         C0.37         0 40.00000 25.00000  250.0000  52.50000
 C0.38     38         C0.38         0 40.00000 25.00000  250.0000  52.50000
-C1.1      39         C1.39         1 30.00000 24.00000  100.0000  30.00000
-C1.2      40         C1.40         1 50.00000 24.00000  100.0000  30.00000
-C1.3      41         C1.41         1 30.00000 24.00000  100.0000  75.00000
-C1.4      42         C1.42         1 50.00000 24.00000  100.0000  75.00000
-C1.5      43         C1.43         1 30.00000 24.00000  100.0000  30.00000
-C1.6      44         C1.44         1 50.00000 24.00000  100.0000  30.00000
-C1.7      45         C1.45         1 30.00000 24.00000  100.0000  75.00000
-C1.8      46         C1.46         1 50.00000 24.00000  100.0000  75.00000
-C1.9      47         C1.47         1 30.00000 26.00000  100.0000  30.00000
-C1.10     48         C1.48         1 50.00000 26.00000  100.0000  30.00000
-C1.11     49         C1.49         1 30.00000 26.00000  100.0000  75.00000
-C1.12     50         C1.50         1 50.00000 26.00000  100.0000  75.00000
-C1.13     51         C1.51         1 30.00000 26.00000  100.0000  30.00000
-C1.14     52         C1.52         1 50.00000 26.00000  100.0000  30.00000
-C1.15     53         C1.53         1 30.00000 26.00000  100.0000  75.00000
-C1.16     54         C1.54         1 50.00000 26.00000  100.0000  75.00000
-C1.17     55         C1.55         1 30.00000 24.00000  400.0000  30.00000
-C1.18     56         C1.56         1 50.00000 24.00000  400.0000  30.00000
-C1.19     57         C1.57         1 30.00000 24.00000  400.0000  75.00000
-C1.20     58         C1.58         1 50.00000 24.00000  400.0000  75.00000
-C1.21     59         C1.59         1 30.00000 24.00000  400.0000  30.00000
-C1.22     60         C1.60         1 50.00000 24.00000  400.0000  30.00000
-C1.23     61         C1.61         1 30.00000 24.00000  400.0000  75.00000
-C1.24     62         C1.62         1 50.00000 24.00000  400.0000  75.00000
-C1.25     63         C1.63         1 30.00000 26.00000  400.0000  30.00000
-C1.26     64         C1.64         1 50.00000 26.00000  400.0000  30.00000
-C1.27     65         C1.65         1 30.00000 26.00000  400.0000  75.00000
-C1.28     66         C1.66         1 50.00000 26.00000  400.0000  75.00000
-C1.29     67         C1.67         1 30.00000 26.00000  400.0000  30.00000
-C1.30     68         C1.68         1 50.00000 26.00000  400.0000  30.00000
-C1.31     69         C1.69         1 30.00000 26.00000  400.0000  75.00000
-C1.32     70         C1.70         1 50.00000 26.00000  400.0000  75.00000
-C1.33     71         C1.71         1 40.00000 25.00000  250.0000  52.50000
-C1.34     72         C1.72         1 40.00000 25.00000  250.0000  52.50000
-C1.35     73         C1.73         1 40.00000 25.00000  250.0000  52.50000
-C1.36     74         C1.74         1 40.00000 25.00000  250.0000  52.50000
-C1.37     75         C1.75         1 40.00000 25.00000  250.0000  52.50000
-C1.38     76         C1.76         1 40.00000 25.00000  250.0000  52.50000
+C1.1      39          C1.1         1 30.00000 24.00000  100.0000  30.00000
+C1.2      40          C1.2         1 50.00000 24.00000  100.0000  30.00000
+C1.3      41          C1.3         1 30.00000 24.00000  100.0000  75.00000
+C1.4      42          C1.4         1 50.00000 24.00000  100.0000  75.00000
+C1.5      43          C1.5         1 30.00000 24.00000  100.0000  30.00000
+C1.6      44          C1.6         1 50.00000 24.00000  100.0000  30.00000
+C1.7      45          C1.7         1 30.00000 24.00000  100.0000  75.00000
+C1.8      46          C1.8         1 50.00000 24.00000  100.0000  75.00000
+C1.9      47          C1.9         1 30.00000 26.00000  100.0000  30.00000
+C1.10     48         C1.10         1 50.00000 26.00000  100.0000  30.00000
+C1.11     49         C1.11         1 30.00000 26.00000  100.0000  75.00000
+C1.12     50         C1.12         1 50.00000 26.00000  100.0000  75.00000
+C1.13     51         C1.13         1 30.00000 26.00000  100.0000  30.00000
+C1.14     52         C1.14         1 50.00000 26.00000  100.0000  30.00000
+C1.15     53         C1.15         1 30.00000 26.00000  100.0000  75.00000
+C1.16     54         C1.16         1 50.00000 26.00000  100.0000  75.00000
+C1.17     55         C1.17         1 30.00000 24.00000  400.0000  30.00000
+C1.18     56         C1.18         1 50.00000 24.00000  400.0000  30.00000
+C1.19     57         C1.19         1 30.00000 24.00000  400.0000  75.00000
+C1.20     58         C1.20         1 50.00000 24.00000  400.0000  75.00000
+C1.21     59         C1.21         1 30.00000 24.00000  400.0000  30.00000
+C1.22     60         C1.22         1 50.00000 24.00000  400.0000  30.00000
+C1.23     61         C1.23         1 30.00000 24.00000  400.0000  75.00000
+C1.24     62         C1.24         1 50.00000 24.00000  400.0000  75.00000
+C1.25     63         C1.25         1 30.00000 26.00000  400.0000  30.00000
+C1.26     64         C1.26         1 50.00000 26.00000  400.0000  30.00000
+C1.27     65         C1.27         1 30.00000 26.00000  400.0000  75.00000
+C1.28     66         C1.28         1 50.00000 26.00000  400.0000  75.00000
+C1.29     67         C1.29         1 30.00000 26.00000  400.0000  30.00000
+C1.30     68         C1.30         1 50.00000 26.00000  400.0000  30.00000
+C1.31     69         C1.31         1 30.00000 26.00000  400.0000  75.00000
+C1.32     70         C1.32         1 50.00000 26.00000  400.0000  75.00000
+C1.33     71         C1.33         1 40.00000 25.00000  250.0000  52.50000
+C1.34     72         C1.34         1 40.00000 25.00000  250.0000  52.50000
+C1.35     73         C1.35         1 40.00000 25.00000  250.0000  52.50000
+C1.36     74         C1.36         1 40.00000 25.00000  250.0000  52.50000
+C1.37     75         C1.37         1 40.00000 25.00000  250.0000  52.50000
+C1.38     76         C1.38         1 40.00000 25.00000  250.0000  52.50000
 S2.1      77          S2.1         2 10.98095 25.00000  250.0000  52.50000
 S2.2      78          S2.2         2 69.01905 25.00000  250.0000  52.50000
 S2.3      79          S2.3         2 40.00000 25.00000  250.0000 -12.79286
@@ -580,7 +608,7 @@ S3.17  0.4000000 20.00000 20.00000
 S3.18  0.4000000 20.00000 20.00000
 S3.19  0.4000000 20.00000 20.00000
 S3.20  0.4000000 20.00000 20.00000
-class=design, type=ccd
+class=design, type= ccd 
 NOTE: columns run.no and run.no.std.rp are annotation, not part of the data frame
 > desnum(ccd.reshuffled.big)
       Block.ccd T U         V         W         X         Y             Z
@@ -829,20 +857,20 @@ Call:
 rsm(formula = y ~ SO(A, B, C, D, E), data = r.plan)
 
 Coefficients:
-         (Intercept)    FO(A, B, C, D, E)1    FO(A, B, C, D, E)2  
-            1.023571             -0.158807             -0.038043  
-  FO(A, B, C, D, E)3    FO(A, B, C, D, E)4    FO(A, B, C, D, E)5  
-            0.300664             -0.003795              0.246796  
-TWI(A, B, C, D, E)12  TWI(A, B, C, D, E)13  TWI(A, B, C, D, E)14  
-           -0.347275              0.040845              0.140368  
-TWI(A, B, C, D, E)15  TWI(A, B, C, D, E)23  TWI(A, B, C, D, E)24  
-           -0.238406              0.123104             -0.360146  
-TWI(A, B, C, D, E)25  TWI(A, B, C, D, E)34  TWI(A, B, C, D, E)35  
-            0.066527             -0.338229              0.378976  
-TWI(A, B, C, D, E)45  PQ(A, B, C, D, E)1^2  PQ(A, B, C, D, E)2^2  
-           -0.310862             -0.157697             -0.049222  
-PQ(A, B, C, D, E)3^2  PQ(A, B, C, D, E)4^2  PQ(A, B, C, D, E)5^2  
-           -0.015238              0.033628              0.122261  
+          (Intercept)     FO(A, B, C, D, E)A     FO(A, B, C, D, E)B  
+             1.023571              -0.158807              -0.038043  
+   FO(A, B, C, D, E)C     FO(A, B, C, D, E)D     FO(A, B, C, D, E)E  
+             0.300664              -0.003795               0.246796  
+TWI(A, B, C, D, E)A:B  TWI(A, B, C, D, E)A:C  TWI(A, B, C, D, E)A:D  
+            -0.347275               0.040845               0.140368  
+TWI(A, B, C, D, E)A:E  TWI(A, B, C, D, E)B:C  TWI(A, B, C, D, E)B:D  
+            -0.238406               0.123104              -0.360146  
+TWI(A, B, C, D, E)B:E  TWI(A, B, C, D, E)C:D  TWI(A, B, C, D, E)C:E  
+             0.066527              -0.338229               0.378976  
+TWI(A, B, C, D, E)D:E   PQ(A, B, C, D, E)A^2   PQ(A, B, C, D, E)B^2  
+            -0.310862              -0.157697              -0.049222  
+ PQ(A, B, C, D, E)C^2   PQ(A, B, C, D, E)D^2   PQ(A, B, C, D, E)E^2  
+            -0.015238               0.033628               0.122261  
 
 > 
 > ## replicated designs
@@ -852,7 +880,7 @@ PQ(A, B, C, D, E)3^2  PQ(A, B, C, D, E)4^2  PQ(A, B, C, D, E)5^2
 > plan <- ccd.augment(FrF2(32,5,blocks=4,randomize=FALSE),6,randomize=FALSE)
 > plan <- ccd.augment(FrF2(16,5,blocks=2,randomize=FALSE),6, bbreps=c(1,2),randomize=FALSE)
 Warning message:
-In ccd(k, generators = generators, blocks = as.formula(paste(block.name,  :
+In .ccd.1.41(k, generators = generators, blocks = as.formula(paste(block.name,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > 
 > ## two different versions of big designs because of different content of base.design
@@ -866,11 +894,14 @@ In FrF2(64, gen = c(7, 11, 14), blocks = 16, alias.block.2fis = TRUE,  :
 > planblockpickbig <- add.response(planblockpickbig,y)
 > plan <- ccd.augment(planblockpickbig,n0=1,randomize=FALSE)
 Warning message:
-In ccd(k, generators = generators, blocks = as.formula(paste(block.name,  :
+In .ccd.1.41(k, generators = generators, blocks = as.formula(paste(block.name,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > planblockpickbig <- FrF2(64,nfactors=9,blocks=16,alias.block.2fis=TRUE,randomize=FALSE)
 > plan <- ccd.augment(planblockpickbig,randomize=FALSE)
 Warning message:
-In ccd(k, generators = generators, blocks = as.formula(paste(block.name,  :
+In .ccd.1.41(k, generators = generators, blocks = as.formula(paste(block.name,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > 
+> proc.time()
+   user  system elapsed 
+   4.77    0.28    5.03 

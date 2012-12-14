@@ -1,7 +1,8 @@
 
-R version 2.10.1 (2009-12-14)
-Copyright (C) 2009 The R Foundation for Statistical Computing
+R version 2.15.2 (2012-10-26) -- "Trick or Treat"
+Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -21,7 +22,6 @@ Loading required package: FrF2
 Loading required package: BsMD
 Loading required package: scatterplot3d
 Loading required package: igraph
-Loading required package: sfsmisc
 Loading required package: DoE.base
 Loading required package: relimp
 Loading Tcl/Tk interface ... done
@@ -30,41 +30,55 @@ Loading required package: vcd
 Loading required package: MASS
 Loading required package: grid
 Loading required package: colorspace
+Loading required package: conf.design
 
 Attaching package: 'DoE.base'
 
+The following object(s) are masked from 'package:conf.design':
 
-	The following object(s) are masked from package:relimp :
+    factorize.factor
 
-	 showData 
+The following object(s) are masked from 'package:relimp':
 
+    showData
 
-	The following object(s) are masked from package:stats :
+The following object(s) are masked from 'package:stats':
 
-	 lm 
+    aov, lm
 
+The following object(s) are masked from 'package:graphics':
 
-	The following object(s) are masked from package:graphics :
+    plot.design
 
-	 plot.design 
+The following object(s) are masked from 'package:utils':
 
-
-	The following object(s) are masked from package:utils :
-
-	 fix 
+    fix
 
 
 Attaching package: 'FrF2'
 
+The following object(s) are masked from 'package:BsMD':
 
-	The following object(s) are masked from package:BsMD :
-
-	 DanielPlot 
+    DanielPlot
 
 Loading required package: rsm
+
+Attaching package: 'rsm'
+
+The following object(s) are masked from 'package:conf.design':
+
+    join
+
 Loading required package: lhs
 Loading required package: DiceDesign
 Loading required package: AlgDesign
+
+Attaching package: 'DoE.wrapper'
+
+The following object(s) are masked from 'package:igraph':
+
+    compare
+
 > set.seed(1212)
 > ## test utility functions from DoE.base for designs that are not in
 > ## DoE.base
@@ -95,7 +109,9 @@ Coefficients:
 +       contrasts=c(A="contr.treatment",B="contr.treatment",C="contr.treatment")))
 
 Call:
-lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment")))
+lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none", 
+    contrasts = c(A = "contr.treatment", B = "contr.treatment", 
+        C = "contr.treatment")))
 
 Coefficients:
 (Intercept)           A2           A3           B2           B3           C2  
@@ -135,7 +151,9 @@ Coefficients:
 +             X3="contr.treatment",X4="contr.helmert")))
 
 Call:
-lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(X1 = "contr.treatment", X2 = "contr.treatment",         X3 = "contr.treatment", X4 = "contr.helmert")))
+lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none", 
+    contrasts = c(X1 = "contr.treatment", X2 = "contr.treatment", 
+        X3 = "contr.treatment", X4 = "contr.helmert")))
 
 Coefficients:
 (Intercept)   Block.ccd2          X12          X13          X14          X15  
@@ -171,7 +189,9 @@ Coefficients:
 +             C="contr.treatment",D="contr.helmert")))
 
 Call:
-lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment", D = "contr.helmert")))
+lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none", 
+    contrasts = c(A = "contr.treatment", B = "contr.treatment", 
+        C = "contr.treatment", D = "contr.helmert")))
 
 Coefficients:
 (Intercept)      Blocks1           A2           B2           C2           D1  
@@ -202,10 +222,15 @@ Coefficients:
 +             C="contr.treatment",D="contr.helmert")))
 
 Call:
-lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none",     contrasts = c(A = "contr.treatment", B = "contr.treatment",         C = "contr.treatment", D = "contr.helmert")))
+lm.default(formula = y ~ ., data = qua.design(plan, quantitative = "none", 
+    contrasts = c(A = "contr.treatment", B = "contr.treatment", 
+        C = "contr.treatment", D = "contr.helmert")))
 
 Coefficients:
 (Intercept)      Blocks1           A2           B2           C2           D1  
    -0.57289     -0.02886      1.41891      0.40742     -0.34354     -0.25996  
 
 > 
+> proc.time()
+   user  system elapsed 
+   0.71    0.23    0.95 
