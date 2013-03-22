@@ -5,6 +5,10 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+22/03/2013, Version 0.8-8
+  - modified ccd.augment, reacting to changes to run.order attribute
+    in FrF2   
+
 14/12/2012, Version 0.8-7
   - incorporated some functions from package rsm (thanks to Russ Lenth), 
     as the new version 2 of rsm broke DoE.wrapper functionality
