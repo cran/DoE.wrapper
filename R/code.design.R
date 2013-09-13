@@ -1,3 +1,34 @@
+.parse.coding <- function (form) 
+{
+    if (!inherits(form, "formula")) 
+        stop("Coding formulas must be of class \"formula\"")
+    if (length(form) < 3) 
+        stop("Formula lacks a left-hand-side")
+    nm = all.vars(form)
+    if (length(nm) < 2) 
+        stop(paste("Error in coding formula:", .form2str(form), 
+            "\nCoded and uncoded names must differ"))
+    names(nm) = c("coded", "orig")
+    rhs = as.character(form)[3]
+    a = eval(parse(text = sub(nm[2], "0", rhs)))
+    b = eval(parse(text = sub(nm[2], "1", rhs)))
+    d = 1/(b - a)
+    list(names = nm, const = c(center = signif(-a * d, 4), divisor = signif(d, 
+        4)))
+}
+
+.form2str <- function (formula) 
+{
+    if (inherits(formula, "formula")) {
+        formula = as.character(formula)
+        if (length(formula) == 3) 
+            formula = paste(formula[c(2, 1, 3)], collapse = " ")
+        else formula = paste(formula, collapse = " ")
+    }
+    formula
+}
+
+
 code.design <- function(design){
       ## function that applies coding information for subsequent application of rsm and its methods
       if (!"design" %in% class(design)) stop("code.design is applicable to class design objects only.")
@@ -38,7 +69,7 @@ decode.design <- function(design){
       nm = names(fn)
        for (f in di$coding) {
 #! --- RVL suggestion ---
-            info = rsm:::.parse.coding(f)   # WAS parse.coding(f)
+            info = .parse.coding(f)   # WAS parse.coding(f)
 #! --- end RVL suggestion ---
             cod = info$names[["coded"]]
             org = info$names[["orig"]]

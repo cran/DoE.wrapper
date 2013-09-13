@@ -5,6 +5,16 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+13/09/2013, Version 0.8-9
+  - copied the hidden functions find.gen and generators.from.design 
+    from package FrF2 into package DoE.wrapper
+  - included the hidden functions .randomize, .block.indices (old rsm functions) 
+    and .parse.coding and .form2str (code.design) from rsm into DoE.wrapper 
+  - modernized author information and acknowledged Russ Lenth as a contributor
+  - changed depdended packages to imported packages
+    (except for DoE.base, FrF2 and rsm) 
+  - added imports from DiceDesign and rsm to namespace file
+
 22/03/2013, Version 0.8-8
   - modified ccd.augment, reacting to changes to run.order attribute
     in FrF2   

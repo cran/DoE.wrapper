@@ -1,7 +1,6 @@
 
-R Under development (unstable) (2013-01-22 r61734) -- "Unsuffered Consequences"
+R Under development (unstable) (2013-09-05 r63851) -- "Unsuffered Consequences"
 Copyright (C) 2013 The R Foundation for Statistical Computing
-ISBN 3-900051-07-0
 Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -19,25 +18,13 @@ Type 'q()' to quit R.
 > require(DoE.wrapper)
 Loading required package: DoE.wrapper
 Loading required package: FrF2
-Loading required package: BsMD
-Loading required package: scatterplot3d
-Loading required package: igraph
 Loading required package: DoE.base
-Loading required package: relimp
-Loading required package: tcltk
-Loading required package: vcd
-Loading required package: MASS
 Loading required package: grid
-Loading required package: colorspace
 Loading required package: conf.design
 
 Attaching package: 'DoE.base'
 
-The following object is masked from 'package:relimp':
-
-    showData
-
-The following object is masked from 'package:stats':
+The following objects are masked from 'package:stats':
 
     aov, lm
 
@@ -45,24 +32,7 @@ The following object is masked from 'package:graphics':
 
     plot.design
 
-
-Attaching package: 'FrF2'
-
-The following object is masked from 'package:BsMD':
-
-    DanielPlot
-
 Loading required package: rsm
-Loading required package: lhs
-Loading required package: DiceDesign
-Loading required package: AlgDesign
-
-Attaching package: 'DoE.wrapper'
-
-The following object is masked from 'package:igraph':
-
-    compare
-
 > 
 > ccd.augment(FrF2(8,4,randomize=FALSE),randomize=FALSE)
       Block.ccd  A  B  C  D
@@ -888,4 +858,4 @@ In .ccd.1.41(k, generators = generators, blocks = as.formula(paste(block.name,  
 > 
 > proc.time()
    user  system elapsed 
-   5.14    0.42    5.60 
+   5.24    0.35    5.61 

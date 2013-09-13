@@ -95,7 +95,8 @@ ccd.augment(cube, ncenter = 4, columns="all", block.name="Block.ccd",
     r.plan.augmented <- add.response(plan.augmented, y, replace=TRUE)
 
   ## for info: how to analyse results from such a desgin
-    lm.result <- lm(y~Block.ccd+(.-Block.ccd)^2+I(A^2)+I(B^2)+I(C^2)+I(D^2)+I(E^2), r.plan.augmented)
+    lm.result <- lm(y~Block.ccd+(.-Block.ccd)^2+I(A^2)+I(B^2)+I(C^2)+I(D^2)+I(E^2), 
+                      r.plan.augmented)
     summary(lm.result)
     ## analysis with function rsm
     rsm.result <- rsm(y~Block.ccd+SO(A,B,C,D,E), r.plan.augmented)

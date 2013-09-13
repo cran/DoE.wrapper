@@ -1,6 +1,43 @@
 ### generate a CCD
 # basis - formula - lhs (opt): dep var name(s);  rhs: var names for basic grid
 # 
+## these are from Russ Lenth
+
+.randomize <- function (design, randomize = TRUE) 
+{
+    OneToN = 1:nrow(design)
+    if (is.na(match("std.order", names(design)))) {
+        design$run.order = design$std.order = OneToN
+        extcols = match(c("run.order", "std.order"), names(design))
+        oldcols = (1:ncol(design))[-extcols]
+        design = `[.coded.data`(design, , c(extcols, oldcols))
+    }
+    if (randomize) {
+        i.init = .block.indices(design)
+        for (idx in i.init) {
+            design[sample(idx), ] = design[idx, ]
+            design$run.order[idx] = 1:length(idx)
+        }
+        row.names(design) = OneToN
+    }
+    design
+}
+.block.indices <- function (design) 
+{
+    rsd = attr(design, "rsdes")
+    if (!is.null(blknm <- rsd$block)) {
+        blk = design[[blknm[1]]]
+        if (length(blknm) > 1) 
+            for (nm in blknm[-1]) blk = paste(blk, design[[nm]], 
+                sep = ".")
+        if (!is.null(blk)) 
+            i.init = split(1:nrow(design), blk)
+        else i.init = list(1:nrow(design))
+    }
+    else i.init = list(1:nrow(design))
+    i.init
+}
+
 
 .ccd.1.41 = function(basis, generators, blocks="Block", n0=4, alpha="orthogonal", 
                wbreps=1, bbreps=1, randomize=TRUE, inscribed=FALSE, coding,
@@ -151,7 +188,7 @@
     if (new.style) {
         if (missing(coding))
             coding = sapply(xvars, function(v) as.formula(paste(v,"~",v,".as.is", sep="")))
-        des = rsm:::.randomize(as.coded.data(des, formulas=coding), randomize=FALSE)
+        des = .randomize(as.coded.data(des, formulas=coding), randomize=FALSE)
         des$std.order = stdord
     }
     

@@ -49,7 +49,7 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     n.c <- di$ncube
     k <- round(log2(di$ncube))
     if (nfactors>k)
-    generators <- FrF2:::generators.from.design(cube)
+    generators <- generators.from.design(cube)
     else generators <- "full factorial" ## problem: if early vector generated from later one, ccd cannot handle this
                                                 ## shuffle back and forth to solve this issue!!!
 
@@ -118,7 +118,7 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     ## error in R CMD check, but not in R itself; why?
     cubecenter <- which(!iscube(cube))
     rn[cubecenter] <- paste(paste("C", as.character(aus[[block.name]])[cubecenter],sep=""),(n.c+1):(n.c+ncenter[1]),sep=".")
-    design <- decode.data(aus)[,-1]   #[,FrF2:::invperm(map[[1]])]
+    design <- decode.data(aus)[,-1]   #[,FrF2 : : : invperm(map[[1]])]
     if (length(more)>0) design <- cbind(design, matrix(NA, nrow=nrow(design), ncol=length(more), dimnames=list(rn, more)))
     design <- rbind(cube[,c(names(factor.names),more)],design[star.points,])
     design <- cbind(aus[[block.name]],design)
@@ -129,7 +129,7 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
 
     #desnum <- aus[,-1]
     attr(desnum,"codings") <- NULL
-    #desnum <- desnum[,FrF2:::invperm(map[[1]])]   ## rearrange columns to match factor order in case of estimable
+    #desnum <- desnum[,FrF2 : : : invperm(map[[1]])]   ## rearrange columns to match factor order in case of estimable
     #colnames(desnum) <- names(factor.names)
     #if (length(more)>0) 
         #desnum <- cbind(desnum, matrix(NA, nrow=nrow(desnum), ncol=length(moredn), dimnames=list(rownames(desnum), moredn)))
