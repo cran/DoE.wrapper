@@ -1,4 +1,4 @@
-ef3f12616673bcc3400ea78594537ecc *DESCRIPTION
+95423e20b23b042d69ca0dc1d4c7056f *DESCRIPTION
 e1038db4d7a203c95002baa2837f510f *NAMESPACE
 6cc4a65b4eb5a78c440c62f1fe3d4237 *R/Dopt.augment.R
 e3f0610fa41e746129ffb310ffceec19 *R/Dopt.design.R
@@ -14,11 +14,11 @@ c8b4b5c96f240c99f1b1365cd2439caa *R/mixture.design.R
 3c14794b8167421836e99d601a60c3fc *R/oldrsmfunctions.R
 40a369f079d77385815cd45c8ae5cdc3 *R/rsm.design.R
 f18de713ea6cdd3c4938cd597a5abae7 *R/rsmformula.R
-eaeeb5d06c78214bd62d3e2469014980 *inst/NEWS
+8301f46a5559eaf638ef1bed1369232b *inst/NEWS
 10fcfe39b103ad854950554521db7124 *man/CentralCompositeDesigns.Rd
 ecd79cf0fc51de4742c0e9d3b5e3e289 *man/DoE.wrapper-package.Rd
 4cb0da507e599dbd20e09f854be5d7e1 *man/Dopt.augment.Rd
-aa7aeee6e25ad3fa1b11e0dbeec94645 *man/Dopt.design.Rd
+0af6b25f4c695ac8d8a0c134f9d6b02f *man/Dopt.design.Rd
 81d2b38e37264df9ab55eb4054f560ac *man/bbd.design.Rd
 6efbc23c91e3674551b71e9ac5e20633 *man/ccd.augment.Rd
 818c5870fa39169b90744600fc876c9f *man/ccd.design.Rd
@@ -28,7 +28,7 @@ bf8e7f22cad8024eabbd60eedc06033c *man/optimality.criteria.Rd
 7d1321198635cb7498de9d2d92e499b4 *tests/Dopt.test.R
 c5f6138b7bd55ff0bd15005ab02fc150 *tests/Dopt.test.Rout.save
 9665a396a4308fb96956b6c5434b52e1 *tests/bbd.test.R
-5c857e9c2d9fb1c6fc6be764cc16ba96 *tests/bbd.test.Rout.save
+e9d296aef319cc076188af116637f89e *tests/bbd.test.Rout.save
 1b2b787fd5bf9295e9844a7799e7e13c *tests/ccd.augment.test.R
 d788dbca271e65b45208aefc3ba99526 *tests/ccd.augment.test.Rout.save
 18b674e86eb24adf3ac6b5e8b949d265 *tests/qua.design.test.R

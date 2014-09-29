@@ -5,6 +5,11 @@ Most features have now been created, but there may still
 be some changes. 
 Suggestions and bug reports are very welcome.
 
+29/09/2014, Version 0.8-10
+  - adapted test output to a correction to Box-Behnken designs in package rsm 
+    and to changes in precision
+  - commented out an example for Dopt.design for saving test time
+
 13/09/2013, Version 0.8-9
   - copied the hidden functions find.gen and generators.from.design 
     from package FrF2 into package DoE.wrapper

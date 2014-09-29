@@ -219,7 +219,8 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
              formula=~.+cause:consequences+gender:consequences+Age:cause)
    ## an experiment on assessing stories of social situations
    ## with the whole block (=whole plot) factor gender of the assessor
-   plan.v.splitplot <- Dopt.design(480, factor.names=list(cause=c("sick","bad luck","fault"), 
+   ##    not run for saving test time on CRAN
+   \dontrun{plan.v.splitplot <- Dopt.design(480, factor.names=list(cause=c("sick","bad luck","fault"), 
              consequences=c("alone","children","sick spouse"),
              gender.story=c("Female","Male"),
              Age=c("young","medium","old")),
@@ -227,7 +228,7 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
              wholeBlockData=cbind(gender=rep(c("Female","Male"),each=48)),
              constraint="!(Age==\"young\" & consequences==\"children\")",
              formula=~.+gender+cause:consequences+gender.story:consequences+
-                 gender:consequences+Age:cause+gender:gender.story)
+                 gender:consequences+Age:cause+gender:gender.story)}
 }
 \seealso{ See also \code{\link[AlgDesign]{optFederov}}, \code{\link[DoE.base]{fac.design}}, 
     \code{\link[AlgDesign:expand.formula]{quad}}, \code{\link[AlgDesign:expand.formula]{cubic}},
