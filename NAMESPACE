@@ -1,3 +1,4 @@
+     import(stats, except=c("aov","lm"))
      import(FrF2,DoE.base,lhs,AlgDesign,rsm,DiceDesign)
      export("lhs.design", "lhs.augment", 
             "ccd.design", "ccd.augment", "bbd.design", "Dopt.design", "Dopt.augment",

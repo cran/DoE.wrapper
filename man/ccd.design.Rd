@@ -134,7 +134,7 @@ ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL,
 
 }
 \author{ Ulrike Groemping }
-\note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
+\note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome. \code{ccd.design} is based on version 1 of package \pkg{rsm}. }
 \examples{
 ccd.design(5) ## per default uses the resolution V design in 16 runs for the cube
 ccd.design(5, ncube=32) ## uses the full factorial for the cube

@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2014-09-27 r66695) -- "Unsuffered Consequences"
-Copyright (C) 2014 The R Foundation for Statistical Computing
-Platform: i386-w64-mingw32/i386 (32-bit)
+R version 3.4.1 (2017-06-30) -- "Single Candle"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -31,6 +31,10 @@ The following objects are masked from 'package:stats':
 The following object is masked from 'package:graphics':
 
     plot.design
+
+The following object is masked from 'package:base':
+
+    lengths
 
 Loading required package: rsm
 > ## try out all available designs with and without factor names
@@ -450,15 +454,15 @@ bbd.design(3, block.name = "blocks", factor.names = list(X = c(0,
 $coding
 $coding$x1
 x1 ~ (X - 5)/5
-<environment: 0x0381f1a4>
+<environment: 0x00000000114a2420>
 
 $coding$x2
 x2 ~ (Y - 0)/10
-<environment: 0x0381f1a4>
+<environment: 0x00000000114a2420>
 
 $coding$x3
 x3 ~ (Z - 250)/27
-<environment: 0x0381f1a4>
+<environment: 0x00000000114a2420>
 
 
 > run.order(plan)
@@ -801,4 +805,4 @@ class=design, type= bbd
 > 
 > proc.time()
    user  system elapsed 
-   0.92    0.20    1.27 
+   1.62    0.15    1.81 

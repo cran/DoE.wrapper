@@ -79,7 +79,7 @@ ccd.augment(cube, ncenter = 4, columns="all", block.name="Block.ccd",
       Process and Product Optimization Using Designed Experiments}. Wiley, New York.
 }
 \author{ Ulrike Groemping }
-\note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
+\note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome. \code{ccd.augment} is based on version 1 of package \pkg{rsm}. }
 \examples{
   ## purely technical examples for the sequential design creation process
     ## start with a fractional factorial with center points

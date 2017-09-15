@@ -1,9 +1,23 @@
 Changes to package DoE.wrapper
 
-The package is still under development. 
+The package is still under (slow) development. 
 Most features have now been created, but there may still 
 be some changes. 
 Suggestions and bug reports are very welcome.
+
+15/09/2017, version 0.9
+  - added an option "qual" to Dopt.design, 
+    in order to facilitate the generation of qualitative designs 
+    from specifying nruns and nlevels only
+  - changed package title to title case
+  - made editorial coding improvements to Dopt.design
+  - added stats to imports
+  - added [.coded.data from rsm to internal functions, in order to make Russ Lenth's 
+    code for accessing old rsm functions work without change while avoiding 
+    problems with R CMD check
+  - modified outdated notes about "intensive development" in manual files
+  - fixed small bug that had factor.names element of design.info without 
+    names for Dopt.design, when factor.names was specified as a character vector
 
 29/09/2014, Version 0.8-10
   - adapted test output to a correction to Box-Behnken designs in package rsm 

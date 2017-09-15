@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2013-09-05 r63851) -- "Unsuffered Consequences"
-Copyright (C) 2013 The R Foundation for Statistical Computing
-Platform: i386-w64-mingw32/i386 (32-bit)
+R version 3.4.1 (2017-06-30) -- "Single Candle"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -31,6 +31,10 @@ The following objects are masked from 'package:stats':
 The following object is masked from 'package:graphics':
 
     plot.design
+
+The following object is masked from 'package:base':
+
+    lengths
 
 Loading required package: rsm
 > set.seed(1212)
@@ -76,7 +80,8 @@ Coefficients:
 > 
 > plan <- ccd.design(4)
 full factorial design needed
-creating full factorial with  16  runs ...
+creating full factorial with 16 runs ...
+
 > y <- rnorm(nrow(plan))
 > lm(y~., plan)
 
@@ -187,4 +192,4 @@ Coefficients:
 > 
 > proc.time()
    user  system elapsed 
-   0.60    0.12    0.71 
+   2.76    0.15    2.90 

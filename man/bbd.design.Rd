@@ -81,7 +81,7 @@ bbd.design(nfactors, ncenter=4, factor.names = NULL, default.levels=c(-1,1),
       Process and Product Optimization Using Designed Experiments}. Wiley, New York.
 }
 \author{ Ulrike Groemping }
-\note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
+\note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome. \code{bbd.design} is based on version 1 of package \pkg{rsm}. }
 \examples{
 plan1 <- bbd.design(5)  ## default for 5 factors is unblocked design, contrary to package rsm
 plan1

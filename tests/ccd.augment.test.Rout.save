@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2013-09-05 r63851) -- "Unsuffered Consequences"
-Copyright (C) 2013 The R Foundation for Statistical Computing
-Platform: i386-w64-mingw32/i386 (32-bit)
+R version 3.4.1 (2017-06-30) -- "Single Candle"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -31,6 +31,10 @@ The following objects are masked from 'package:stats':
 The following object is masked from 'package:graphics':
 
     plot.design
+
+The following object is masked from 'package:base':
+
+    lengths
 
 Loading required package: rsm
 > 
@@ -65,7 +69,8 @@ Warning message:
 In .ccd.1.41(k, generators = generators, blocks = block.name, n0 = ncenter,  :
   Some 1st or 2nd-order terms are aliased in the cube portion of this design
 > ccd.augment(FrF2(8,3,randomize=FALSE),randomize=FALSE)
-creating full factorial with  8  runs ...
+creating full factorial with 8 runs ...
+
       Block.ccd         A         B         C
 C1.1          1 -1.000000 -1.000000 -1.000000
 C1.2          1  1.000000 -1.000000 -1.000000
@@ -563,7 +568,8 @@ S3.18  0.4000000 20.00000 20.00000
 S3.19  0.4000000 20.00000 20.00000
 S3.20  0.4000000 20.00000 20.00000
 class=design, type= ccd 
-NOTE: columns run.no and run.no.std.rp are annotation, not part of the data frame
+NOTE: columns run.no and run.no.std.rp  are annotation, 
+ not part of the data frame
 > desnum(ccd.reshuffled.big)
       Block.ccd T U         V         W         X         Y             Z
 C0.1          0 0 0 -1.000000 -1.000000 -1.000000 -1.000000 -1.000000e+00
@@ -858,4 +864,4 @@ In .ccd.1.41(k, generators = generators, blocks = as.formula(paste(block.name,  
 > 
 > proc.time()
    user  system elapsed 
-   5.24    0.35    5.61 
+   6.63    0.34    7.03 

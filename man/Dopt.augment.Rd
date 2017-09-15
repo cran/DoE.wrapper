@@ -117,7 +117,7 @@ Dopt.augment(design, m=1, formula=NULL, candidates=NULL, constraint=NULL,
     These elements are only present to fulfill the formal requirements for class \code{design}.)
     }
 \author{ Ulrike Groemping }
-\note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
+\note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome.}
 \references{ 
   Atkinson, A.C. and Donev, A.N. (1992). \emph{Optimum experimental designs}. Clarendon Press, Oxford. 
 

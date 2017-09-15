@@ -99,7 +99,7 @@ rsmformula(design, response=NULL, factor.names=NULL,
       Process and Product Optimization Using Designed Experiments}. Wiley, New York.
 }
 \author{ Ulrike Groemping }
-\note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
+\note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome.  }
 \examples{
   ## an artificial example with random response
   ## purely for demonstrating how the functions work together with rsm

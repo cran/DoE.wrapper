@@ -138,7 +138,7 @@ lhs.augment(lhs, m=1, type="optAugment", seed=NULL, ...)
     these elements are only present to fulfill the formal requirements for class \code{design}.
     }
 \author{ Ulrike Groemping }
-\note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
+\note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome.  }
 \references{ 
   Beachkofski, B., Grandhi, R. (2002) Improved Distributed Hypercube Sampling. American Institute of Aeronautics and Astronautics Paper 1274.
   

@@ -10,7 +10,7 @@
 \usage{
 Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL, 
     digits=NULL, constraint=NULL, center=FALSE, nRepeats=5, seed=NULL, randomize=TRUE, 
-    blocks=1, block.name="Blocks", wholeBlockData=NULL, ...)
+    blocks=1, block.name="Blocks", wholeBlockData=NULL, qual=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -44,7 +44,8 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
         \code{\link[DoE.base]{fac.design}}).\cr
         \code{factor.names} can also be a character vector. 
         In this case, \code{nlevels} must be specified, and levels are automatically assigned 
-        as integers starting with 1.
+        as integers starting with 1, which implies quantitative factors, 
+        unless \code{qual=TRUE} is specified.
         }
   \item{nlevels}{ can be omitted if the list \code{factor.names} explicitly 
         lists all factor levels (which of course defines the number of levels).\cr 
@@ -109,6 +110,10 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
         may want to try out various possible whole block setups, or to proceed sequentially 
         by first optimizing a whole block design for a model with the whole block factors only 
         and subsequently using this model for adding split-plot factors.}
+  \item{qual}{optional logical (length 1 or same as number of factors); ignored, if \code{data} 
+        is specified; overrides automatic determination of whether or not factors are quantitative;\cr 
+        if neither \code{qual} nor \code{data} are specified, factors are per default quantitative, 
+        unless they have non-numeric levels in a list-valued \code{factor.names}}
   \item{\dots}{ additional arguments to functions \code{\link[AlgDesign]{optFederov}} 
         or \code{\link[AlgDesign]{optBlock}} (if blocking is requested) 
         from package \pkg{AlgDesign};\cr 
@@ -184,7 +189,7 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
     imply this.)
     }
 \author{ Ulrike Groemping }
-\note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
+\note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome.}
 \references{ 
   Atkinson, A.C. and Donev, A.N. (1992). \emph{Optimum experimental designs}. Clarendon Press, Oxford. 
 

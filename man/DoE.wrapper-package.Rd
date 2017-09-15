@@ -48,7 +48,7 @@
       Process and Product Optimization Using Designed Experiments}. Wiley, New York.
 }
 \author{ Ulrike Groemping }
-\note{ This package is currently under development. Some changes are to be expected in the near future.}
+\note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome.}
 \seealso{ See also \code{\link{ccd.design}}, \code{\link{ccd.augment}}, \code{\link{bbd.design}}, \code{\link{lhs.design}}, 
     \code{\link{Dopt.design}}, \code{\link{Dopt.augment}},
     \code{\link[lhs]{lhs-package}}, \code{\link[rsm]{rsm}}, \code{\link[AlgDesign]{optFederov}}, 

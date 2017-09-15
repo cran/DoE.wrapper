@@ -55,7 +55,7 @@
 
 }
 \author{ Ulrike Groemping }
-\note{ This package is currently under intensive development. Substantial changes are to be expected in the near future.}
+\note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome.  }
 \seealso{ See Also \code{\link[rsm]{ccd}}, \code{\link{ccd.design}}, \code{\link{ccd.augment}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

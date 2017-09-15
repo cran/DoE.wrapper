@@ -3,6 +3,27 @@
 # 
 ## these are from Russ Lenth
 
+`[.coded.data` <- function (x, ...) 
+{
+    cod = attr(x, "codings")
+    rsd = attr(x, "rsdes")
+    cls = class(x)
+    x = get("[.data.frame")(x, ...)
+    if (!("coded.data" %in% cls)) 
+        return(x)
+    lost = which(is.na(match(nm <- names(cod), names(x))))
+    for (i in lost) cod[[nm[i]]] <- NULL
+    if (length(cod) > 0) {
+        attr(x, "codings") = cod
+        attr(x, "rsdes") = rsd
+    }
+    else {
+        class(x) = cls[-1]
+        attr(x, "codings") = attr(x, "rsdes") = NULL
+    }
+    x
+}
+
 .randomize <- function (design, randomize = TRUE) 
 {
     OneToN = 1:nrow(design)
