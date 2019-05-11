@@ -67,7 +67,17 @@ ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL,
        For the statistical and algorithmic background of blocked designs, see \code{\link[FrF2]{block}}.
        }
   \item{randomize}{ logical that indicates whether or not randomization should occur }
-  \item{seed}{ NULL or a vector of two integer seeds for random number generation in randomization }
+  \item{seed}{ NULL or a vector of two integer seeds for random number generation in randomization\cr
+        In R version 3.6.0 and later, the default behavior of function \code{\link{sample}}
+        has changed. If you work in a new (i.e., >= 3.6.-0) R version and want to reproduce 
+        a randomized design from an earlier R version (before 3.6.0), 
+        you have to change the RNGkind setting by\cr
+        \code{RNGkind(sample.kind="Rounding")}\cr
+        before running function \code{ccd.design}.\cr
+        It is recommended to change the setting back to the new recommended way afterwards:\cr
+        \code{RNGkind(sample.kind="default")}\cr
+        For an example, see the documentation of the example data set \code{\link[DoE.base]{VSGFS}}.
+        }
   \item{\dots}{ reserved for future usage}
 }
 \details{
@@ -132,6 +142,12 @@ ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL,
   Myers, R.H., Montgomery, D.C. and Anderson-Cook, C.M. (2009). \emph{Response Surface Methodology. 
       Process and Product Optimization Using Designed Experiments}. Wiley, New York.
 
+}
+\section{Warning}{
+   Since R version 3.6.0, the behavior of function \code{\link{sample}} has changed 
+   (correction of a biased previous behavior that should not be relevant for the randomization of designs). 
+   For reproducing a randomized design that was produced with an earlier R version, 
+   please follow the steps described with the argument \code{seed}.
 }
 \author{ Ulrike Groemping }
 \note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome. \code{ccd.design} is based on version 1 of package \pkg{rsm}. }

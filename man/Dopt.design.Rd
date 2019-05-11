@@ -83,7 +83,17 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
         here, the seed is needed even if the design is not randomized, because the 
         generation process for the optimum design involves random numbers, even if the 
         order of the final design is not randomized;\cr
-        if a reproducible design is needed, it is therefore recommended to specify a seed }
+        if a reproducible design is needed, it is therefore recommended to specify a seed.\cr\cr
+        In R version 3.6.0 and later, the default behavior of function \code{\link{sample}}
+        has changed. If you work in a new (i.e., >= 3.6.-0) R version and want to reproduce 
+        a randomized design from an earlier R version (before 3.6.0), 
+        you have to change the RNGkind setting by\cr
+        \code{RNGkind(sample.kind="Rounding")}\cr
+        before running function \code{Dopt.design}.\cr
+        It is recommended to change the setting back to the new recommended way afterwards:\cr
+        \code{RNGkind(sample.kind="default")}\cr
+        For an example, see the documentation of the example data set \code{\link[DoE.base]{VSGFS}}.
+        }
   \item{randomize}{ logical deciding whether or not the design should be randomized; 
         if it is \code{TRUE}, the design (or the additional portion of the design) returned by the 
         workhorse function \code{\link[AlgDesign]{optFederov}} is brought 
@@ -188,8 +198,14 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
     Note however, that blocked designs do in fact repeat experimental runs if \code{nruns} and \code{blocks}
     imply this.)
     }
-\author{ Ulrike Groemping }
+\section{Warning}{
+   Since R version 3.6.0, the behavior of function \code{\link{sample}} has changed 
+   (correction of a biased previous behavior that should not be relevant for the randomization of designs). 
+   For reproducing a design that was produced with an earlier R version, 
+   please follow the steps described with the argument \code{seed}.
+}
 \note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome.}
+\author{ Ulrike Groemping }
 \references{ 
   Atkinson, A.C. and Donev, A.N. (1992). \emph{Optimum experimental designs}. Clarendon Press, Oxford. 
 

@@ -1,4 +1,8 @@
 require(DoE.wrapper)
+options(warn=-1)
+if(getRversion() >= "3.6.0") RNGkind(sample.kind="Rounding")
+options(warn=0)
+
 set.seed(1212)
 ## test utility functions from DoE.base for designs that are not in
 ## DoE.base

@@ -1,4 +1,7 @@
 require(DoE.wrapper)
+options(warn=-1)
+if(getRversion() >= "3.6.0") RNGkind(sample.kind="Rounding")
+options(warn=0)
 
 ccd.augment(FrF2(8,4,randomize=FALSE),randomize=FALSE)
 ccd.augment(FrF2(8,3,randomize=FALSE),randomize=FALSE)

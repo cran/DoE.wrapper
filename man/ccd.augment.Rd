@@ -25,7 +25,17 @@ ccd.augment(cube, ncenter = 4, columns="all", block.name="Block.ccd",
         or a number that indicates the position of the star points;
         the number 1 would create a face-centered design. }
   \item{randomize}{ logical that indicates whether or not randomization should occur }
-  \item{seed}{ NULL or a vector of two integer seeds for random number generation in randomization }
+  \item{seed}{ NULL or a vector of two integer seeds for random number generation in randomization\cr
+        In R version 3.6.0 and later, the default behavior of function \code{\link{sample}}
+        has changed. If you work in a new (i.e., >= 3.6.-0) R version and want to reproduce 
+        a randomized design from an earlier R version (before 3.6.0), 
+        you have to change the RNGkind setting by\cr
+        \code{RNGkind(sample.kind="Rounding")}\cr
+        before running function \code{ccd.augment}.\cr
+        It is recommended to change the setting back to the new recommended way afterwards:\cr
+        \code{RNGkind(sample.kind="default")}\cr
+        For an example, see the documentation of the example data set \code{\link[DoE.base]{VSGFS}}.
+        }
   \item{\dots}{ reserved for future usage }
   \item{columns}{not yet implemented; 
         it is intended to later allow to add star points for only some factors 
@@ -78,8 +88,14 @@ ccd.augment(cube, ncenter = 4, columns="all", block.name="Block.ccd",
   Myers, R.H., Montgomery, D.C. and Anderson-Cook, C.M. (2009). \emph{Response Surface Methodology. 
       Process and Product Optimization Using Designed Experiments}. Wiley, New York.
 }
-\author{ Ulrike Groemping }
+\section{Warning}{
+   Since R version 3.6.0, the behavior of function \code{\link{sample}} has changed 
+   (correction of a biased previous behavior that should not be relevant for the randomization of designs). 
+   For reproducing a randomized design that was produced with an earlier R version, 
+   please follow the steps described with the argument \code{seed}.
+}
 \note{ This package is still under (slow) development. Reports about bugs and inconveniences are welcome. \code{ccd.augment} is based on version 1 of package \pkg{rsm}. }
+\author{ Ulrike Groemping }
 \examples{
   ## purely technical examples for the sequential design creation process
     ## start with a fractional factorial with center points
