@@ -253,7 +253,10 @@ Dopt.design(nruns, data=NULL, formula=~., factor.names=NULL, nlevels=NULL,
 }
 \seealso{ See also \code{\link[AlgDesign]{optFederov}}, \code{\link[DoE.base]{fac.design}}, 
     \code{\link[AlgDesign:expand.formula]{quad}}, \code{\link[AlgDesign:expand.formula]{cubic}},
-    \code{\link{Dopt.augment}} }
+    \code{\link{Dopt.augment}}. Furthermore, unrelated to function \code{Dopt.design}, 
+    see also function \code{\link[skpr]{gen_design}} from package \pkg{skpr} 
+for a new general R package for creating D-optimal or other letter optimal designs.}
+
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ array }

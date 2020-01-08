@@ -1,17 +1,17 @@
 require(DoE.wrapper)
 options(warn=-1)
-if(getRversion() >= "3.6.0") RNGkind(sample.kind="Rounding")
-options(warn=0)
 
 ccd.augment(FrF2(8,4,randomize=FALSE),randomize=FALSE)
 ccd.augment(FrF2(8,3,randomize=FALSE),randomize=FALSE)
 
+
 ## resolution V design as basis
 plan <- FrF2(16,5,ncenter=4,randomize=FALSE)
 set.seed(2424)
-y <- rexp(20)
+y <- round(rexp(20), 4)
 r.plan <- add.response(plan,y)
 ccd.augment(plan,4,randomize=FALSE)
+
 ## augmenting design with response
 ccd.augment(r.plan,4,randomize=FALSE)
 
@@ -19,6 +19,8 @@ ccd.augment(r.plan,4,randomize=FALSE)
 ## basic order
 basic <- FrF2(8,4, estimable=c("CD"),res3=TRUE,randomize=FALSE)
 ccd.augment(basic,4,randomize=FALSE)
+
+ndig <- 4
 ## reshuffled
 ## only one swap
 reshuffled <- FrF2(8,4, estimable=c("AD"),res3=TRUE,randomize=FALSE)
@@ -28,7 +30,9 @@ reshuffled <- FrF2(8,4, estimable=c("AD"),res3=TRUE, default.levels=c(0,100),
 reshuffled <- FrF2(8,4, estimable=c("AD"),res3=TRUE, default.levels=c(0,100),
     factor.names=list(T=c(30,50),U=c(24,26),V=c(100,400),W=c(30,75)),randomize=FALSE)
 ccd.augment(reshuffled,6,randomize=FALSE)
-desnum(ccd.augment(reshuffled,6,randomize=FALSE))
+
+round(desnum(ccd.augment(reshuffled,6,randomize=FALSE)), 6)
+
 ## more reshuffling
 reshuffled.big <- FrF2(32,7, estimable=c("AC","BC","AB"),randomize=FALSE,
    factor.names=Letters[19:25],default.levels=c(10,30))
@@ -38,12 +42,13 @@ reshuffled.big <- FrF2(32,7, estimable=c("AC","BC","AB"),randomize=FALSE,
    default.levels=c(10,30),repl=2)
 ccd.reshuffled.big <- ccd.augment(reshuffled.big,6,randomize=FALSE)
 ccd.reshuffled.big
-desnum(ccd.reshuffled.big)
+
+round(desnum(ccd.reshuffled.big), 6)
 
 ## a properly designed plan
 plan <- ccd.augment(FrF2(16,5,randomize=FALSE),6,randomize=FALSE)
 set.seed(23232)
-y <- rexp(38)
+y <- round(rexp(38),4)
 r.plan <- add.response(plan, y)
 rsm(y~SO(A,B,C,D,E), r.plan)
 
@@ -57,7 +62,7 @@ plan <- ccd.augment(FrF2(16,5,blocks=2,randomize=FALSE),6, bbreps=c(1,2),randomi
 ## two different versions of big designs because of different content of base.design
 planblockpickbig <- FrF2(64,gen=c(7,11,14),blocks=16,alias.block.2fis=TRUE,randomize=FALSE)
 set.seed(2323)
-y <- rnorm(64)
+y <- round(rnorm(64),4)
 planblockpickbig <- add.response(planblockpickbig,y)
 plan <- ccd.augment(planblockpickbig,n0=1,randomize=FALSE)
 planblockpickbig <- FrF2(64,nfactors=9,blocks=16,alias.block.2fis=TRUE,randomize=FALSE)

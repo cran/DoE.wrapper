@@ -1,8 +1,6 @@
 require(DoE.wrapper)
 ## try out all available designs with and without factor names
 options(warn=-1)
-if(getRversion() >= "3.6.0") RNGkind(sample.kind="Rounding")
-options(warn=0)
 
 set.seed(1234)
 bbd.design(3)

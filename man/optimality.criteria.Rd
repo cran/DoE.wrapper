@@ -81,8 +81,11 @@ compare(...)
    distance for of design points is large relative to their standard deviation; 
    large values are desirable).
    
-   Finally, function \code{\link[DiceDesign]{discrepancyCriteria}} calculates 
+   Function \code{\link[DiceDesign]{discrepancyCriteria}} calculates 
    several versions of L2 discrepancy. 
+   
+   Function \code{link[skpr]{eval_design}} calculates effect and parameter powers 
+   for a design for a specified model and a specified significance level \code{alpha}. 
    }
 \value{
    Function \code{Scalc} returns a single number: the harmonic mean of all pairwise interpoint distances 
@@ -155,7 +158,8 @@ compare(...)
    }
 \seealso{ See Also \code{\link[lhs]{lhs-package}}, 
     \code{\link[DiceDesign]{DiceDesign-package}}, 
-    \code{\link[AlgDesign]{eval.design}} }
+    \code{\link[AlgDesign]{eval.design}}, 
+    \code{\link[skpr]{eval_design}} }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ array }

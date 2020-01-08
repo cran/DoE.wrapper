@@ -3,6 +3,13 @@ Changes to package DoE.wrapper
 The package is still under (slow) development. 
 Suggestions and bug reports are very welcome.
 
+06/01/2020, version 0.11
+  - removed output checks because they do not work on low accuracy machines (noLD issues)
+  - added comment to CCD generation (block argument) 
+    regarding modifications in blocking behavior in FrF2
+  - added references to package skpr in help on Dopt.design, Dopt.augment, and 
+    optimality.criteria, and added skpr to suggested packages
+
 10/05/2019, version 0.10
   - added information on the change in random number generation 
     introduced in R 3.6.0, which affects randomization of designs, 

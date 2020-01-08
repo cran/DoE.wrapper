@@ -1,8 +1,6 @@
 require(DoE.wrapper)
 ## try out all available designs with and without factor names
 options(warn=-1)
-if(getRversion() >= "3.6.0") RNGkind(sample.kind="Rounding")
-options(warn=0)
 
 set.seed(1234)
 
@@ -15,7 +13,7 @@ set.seed(1234)
    design.info(plan)
    run.order(plan)
    cor(plan)
-   y <- rnorm(36)
+   y <- round(rnorm(36), 4)
    r.plan <- add.response(plan, y)
    summary(r.plan)
    summary(lm(r.plan))
@@ -27,14 +25,14 @@ candplan <- expand.grid(eins=c(100,150,200,250),zwei=c(10,20,30),drei=c(-25,-15,
 planc <- Dopt.design(36, candplan, formula=~quad(.), 
                           constraint="!(eins>=200 & zwei==30 & drei==25)", center=TRUE)
 planc
-cor(desnum(planc)[,-1])
+round(cor(desnum(planc)[,-1]), 4)
 
 ## design with blocking without wholeBlockData (i.e. blocked, not splitplot)
 planc <- Dopt.design(36, candplan, formula=~quad(.), 
                           constraint="!(eins>=200 & zwei==30 & drei==25)", center=TRUE, 
                           blocks=3)
 summary(planc)
-cor(desnum(planc)[,-1])
+round(cor(desnum(planc)[,-1]), 4)
 
 ## design with blocking without wholeBlockData (i.e. blocked, not splitplot)
 ## variable block sizes
@@ -42,7 +40,7 @@ planc <- Dopt.design(36, candplan, formula=~quad(.),
                           constraint="!(eins>=200 & zwei==30 & drei==25)", center=TRUE, 
                           blocks=c(6,6,12,12))
 summary(planc)
-cor(desnum(planc)[,-1])
+round(cor(desnum(planc)[,-1]), 4)
 
 ## design with blocking with wholeBlockData (splitplot)
 within<-expand.grid(A=c(-1,0,1),B=c(-1,0,1),C=c(-1,0,1))
@@ -58,6 +56,6 @@ planc <- Dopt.design(36, candplan, formula=~semester+reader+(eins+zwei+drei)^2,c
                           constraint="!(eins>=200 & zwei==30 & drei==25)",
                           blocks=c(12,12,12), wholeBlockData=whole)
 summary(planc)
-cor(desnum(planc)[,-1])
+round(cor(desnum(planc)[,-1]), 4)
 r.planc <- add.response(planc, rnorm(36))
 summary(lm(r.planc))

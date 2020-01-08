@@ -64,7 +64,8 @@ ccd.design(nfactors=NULL, factor.names=NULL, default.levels=c(-1,1), ncube=NULL,
        
        If the experiment is randomized, randomization happens within blocks. \cr
        
-       For the statistical and algorithmic background of blocked designs, see \code{\link[FrF2]{block}}.
+       For the statistical and algorithmic background of blocked designs, see \code{\link[FrF2]{block}}.\cr
+       Note that the blocking strategy of package \pkg{FrF2} was modified with version 2 (2.1) of the package.
        }
   \item{randomize}{ logical that indicates whether or not randomization should occur }
   \item{seed}{ NULL or a vector of two integer seeds for random number generation in randomization\cr
