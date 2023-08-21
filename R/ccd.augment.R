@@ -119,9 +119,14 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     cubecenter <- which(!iscube(cube))
     rn[cubecenter] <- paste(paste("C", as.character(aus[[block.name]])[cubecenter],sep=""),(n.c+1):(n.c+ncenter[1]),sep=".")
     design <- decode.data(aus)[,-1]   #[,FrF2 : : : invperm(map[[1]])]
-    if (length(more)>0) design <- cbind(design, matrix(NA, nrow=nrow(design), ncol=length(more), dimnames=list(rn, more)))
-    design <- rbind(cube[,c(names(factor.names),more)],design[star.points,])
-    design <- cbind(aus[[block.name]],design)
+    
+    ## added stringsAsFactors=TRUE because of new default in R 4.0
+    if (length(more)>0) design <- cbind(design, matrix(NA, nrow=nrow(design), ncol=length(more), dimnames=list(rn, more)), 
+    stringsAsFactors=TRUE)
+    design <- rbind(cube[,c(names(factor.names),more)],design[star.points,], 
+    stringsAsFactors=TRUE)
+    design <- cbind(aus[[block.name]],design, 
+    stringsAsFactors=TRUE)
     colnames(design)[1] <- block.name
     rownames(design) <- rn
     desnum <- coded.data(design, formulas=attr(aus,"coding"))
@@ -144,7 +149,10 @@ ccd.augment <- function(cube, ncenter = 4, columns="all", block.name="Block.ccd"
     
     desnum(design) <- desnum
     ## bug fix Nov 15: aus replaced by design (mismatch of run.order with row.names)
-    run.order(design) <- data.frame(run.no.in.std.order=row.names(design),run.no=1:nrow(design),run.no.std.rp =rownames(design))
+    run.order(design) <- data.frame(run.no.in.std.order=row.names(design),
+                                    run.no=1:nrow(design),
+                                    run.no.std.rp =rownames(design),
+                                    stringsAsFactors = TRUE)
     di$type <- "ccd"
     di$block.name <- block.name
     di$coding <- lapply(attr(aus,"coding"),"as.formula",env=NULL)[map[[1]]]

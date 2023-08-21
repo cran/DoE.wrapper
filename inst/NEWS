@@ -3,6 +3,15 @@ Changes to package DoE.wrapper
 The package is still under (slow) development. 
 Suggestions and bug reports are very welcome.
 
+21/08/2023, version 0.12
+  - added stringsAsFactors=TRUE to data.frame call in ccd.augment, in order 
+    to work as expected for R versions from 4.0
+  - added an alias for DoE.wrapper-package as requested by CRAN team
+  - removed unnecessary LazyData from description
+  - updated website address and mail address
+  - used '' on package names in Description
+  - removed Encoding field from description
+
 06/01/2020, version 0.11
   - removed output checks because they do not work on low accuracy machines (noLD issues)
   - added comment to CCD generation (block argument) 

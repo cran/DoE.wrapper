@@ -1,5 +1,5 @@
-\name{DoE.wrapper-page}
-\alias{DoE.wrapper-page}
+\name{DoE.wrapper-package}
+\alias{DoE.wrapper-package}
 \alias{DoE.wrapper}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Wrapper package for design of experiments functionality }

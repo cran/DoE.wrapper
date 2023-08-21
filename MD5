@@ -1,10 +1,10 @@
-43e3bed9d689d1626df7bdfa6493a20a *DESCRIPTION
+c2bbecf0f916c737f96413acdd69f1f6 *DESCRIPTION
 3e4a47087eb9a726cc8467ed97c2d791 *NAMESPACE
 6cc4a65b4eb5a78c440c62f1fe3d4237 *R/Dopt.augment.R
 9cc91446b89f5ba5252d8087a9a5e777 *R/Dopt.design.R
 fc1e9bfd63ac88d659bb408a8c2971f8 *R/Scalc.R
 36dde5779711d93c74352730b0ccf3fe *R/bbd.design.R
-545bec270e873d326cd5501c66a502cc *R/ccd.augment.R
+b6db65986bc7654b05aa690831602577 *R/ccd.augment.R
 fa4494016d2ec8a7bf06a865b9f7b595 *R/ccd.design.R
 32801d7441b98d89566e779796275f5e *R/code.design.R
 f5f07a9def584ed16d4467cb8dfcb093 *R/compare.R
@@ -14,9 +14,9 @@ c8b4b5c96f240c99f1b1365cd2439caa *R/mixture.design.R
 8d7a40188b20b7f2aa1cbbfb4e38a8b1 *R/oldrsmfunctions.R
 40a369f079d77385815cd45c8ae5cdc3 *R/rsm.design.R
 f18de713ea6cdd3c4938cd597a5abae7 *R/rsmformula.R
-60b5af0b1fdbdd9df64b480cbabd60b0 *inst/NEWS
+2259246f9d315f51d4cba79b00c06d74 *inst/NEWS
 6c3755ec3e5022af74200bf0c55064e7 *man/CentralCompositeDesigns.Rd
-dd71e6d41e6f220160bfd3f700a05fa8 *man/DoE.wrapper-package.Rd
+b6c519533a804a717d1f9e68a8857cfb *man/DoE.wrapper-package.Rd
 15cf1db02c6c2321d2147a175d09844f *man/Dopt.augment.Rd
 90d8c1ed639480b9f7667425bf66dd63 *man/Dopt.design.Rd
 e1ad18de0a53f9f9b0e369e0cc234013 *man/bbd.design.Rd
